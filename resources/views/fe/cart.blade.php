@@ -56,7 +56,7 @@
                     <section class="totalAllProduct my-2">
                         <div class="d-flex justify-content-end  align-items-center">
                             
-                            <b class="mx-2"><a href="">Tổng tiền tất cả: {{number_format($cart->totalPriceAll())}}</a></b>
+                            <b class="mx-2"><a href="" class="text-dark">Tổng tiền: {{number_format($cart->totalPriceAll())}}</a></b>
                             <button type="submit" class="btn btn-warning">Mua ngay</button>
                         </div>
                     </section>

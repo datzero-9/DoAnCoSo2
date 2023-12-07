@@ -19,6 +19,7 @@ class CartController extends Controller
         $product = Products::find($request->id);
         $quantity = $request->quantity;
         $cart->add($product, $quantity);
-        return redirect()->route('cart.index');
+        //nên hiện thị thong báo thôi  thay vì nhảy thẳng qua
+        return redirect()->back();
     }
 }

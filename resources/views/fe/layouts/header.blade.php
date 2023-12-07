@@ -64,11 +64,11 @@
                     <!-- giỏ hàng  -->
                     <div class="col-4 d-flex align-items-center justify-content-center nav_giohang">
                         <div type="button" class="position-relative">
-                            <a href=""> <i class='bx bxs-cart-alt fs-3'></i></a>
+                            <a href="{{route('cart.index')}}"> <i class='bx bxs-cart-alt fs-3'></i></a>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                0
-                                <!-- <span class="visually-hidden">unread messages</span> -->
+                                {{$cart->totalQuantity()}}
+                               
                             </span>
                         </div>
 

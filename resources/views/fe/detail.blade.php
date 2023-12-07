@@ -62,8 +62,8 @@
                                         <span class="review-no">999 reviews</span>
                                     </div>
                                     
-                                    <small class="text-muted">Giá cũ: <s><span>{{number_format($product->sale_price)}} vnđ</span></s></small>
-                                    <h4 class="price">Giá hiện tại: <span>{{number_format($product->price)}} vnđ</span></h4>
+                                    <small class="text-muted">Giá cũ: <s><span>{{number_format($product->price)}} vnđ</span></s></small>
+                                    <h4 class="price">Giá hiện tại: <span>{{number_format($product->sale_price)}} vnđ</span></h4>
                                     <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
                                         <strong>Uy
                                             tín</strong>!

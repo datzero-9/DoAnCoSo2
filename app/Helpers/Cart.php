@@ -20,10 +20,22 @@ class Cart
     {
         $item = [
             'product_id' => $product->id,
+            'name' => $product->name,
             'price' => $product->sale_price > 0 ? $product->sale_price : $product->price,
             'image' => $product->image,
             'quantity' => $quantity
         ];
-        session(['cart' => $item]);
+
+        $this->items[$product->id]=$item;
+
+        session(['cart' =>  $this->items]);
+    }
+
+    public function totalPriceAll(){
+        $total = 0;
+        foreach($this->items as $item){
+            $total +=$item['price'] * $item['quantity'];
+            return $total;
+        }
     }
 }

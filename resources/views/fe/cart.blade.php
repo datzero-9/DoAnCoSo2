@@ -27,41 +27,36 @@
                             </tr>
                         </thead>
                         <tbody id="datarow">
+                            @foreach ($cart->list() as $item => $value)
+                            
                             <tr>
                                 <td>1</td>
                                 <td>
-                                    <img src="../assets/img/product/ipad4.png" class="hinhdaidien">
+                                 <img src="{{asset('storage/images')}}/{{$value['image']}}" class="hinhdaidien">
                                 </td>
-                                <td>Apple Ipad 4 Wifi 16GB</td>
+                                <td>{{$value['name']}}</td>
                                 <td class="text-right">
                                     <div class="input-group">
-                                        <span class="input-group-btn">
-                                          <button type="button" class="btn btn-default btn-number fs-5" data-type="minus" data-field="quantity">
-                                            -
-                                          </button>
-                                        </span>
-                                        <input type="text" id="quantity" name="quantity" class="form-control input-number " value="1" min="1" max="100" style="width: 20px;border: none;">
-                                        <span class="input-group-btn">
-                                          <button type="button" class="btn btn-default btn-number fs-5" data-type="plus" data-field="quantity">
-                                            +
-                                          </button>
-                                        </span>
+                                        {{$value['quantity']}}
                                       </div>
                                 </td>
-                                <td class="text-right">11,800,000.00</td>
-                                <td class="text-right">23,600,000</td>
+                                <td>{{number_format($value['price'])}}</td>
+                                <td class="text-right">{{number_format($value['price']*$value['quantity'])}}</td>
+                                
                                 <td>
                                     <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
                                     <a id="delete_1" data-sp-ma="2" class="btn btn-danger btn-delete-sanpham">
                                         <i class="fa fa-trash" aria-hidden="true"></i> Xóa
                                     </a>
                                 </td>
-                        
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <section class="totalAllProduct my-2">
                         <div class="d-flex justify-content-end  align-items-center">
-                            <b class="mx-2"><a href="">Tổng tiền tất cả:</a></b>
+                            
+                            <b class="mx-2"><a href="">Tổng tiền tất cả: {{number_format($cart->totalPriceAll())}}</a></b>
                             <button type="submit" class="btn btn-warning">Mua ngay</button>
                         </div>
                     </section>
@@ -89,136 +84,112 @@
     <!--  -->
 @endsection
 @section('css')
-<style>
-    /* GLOBAL STYLES
--------------------------------------------------- */
-    /* Padding below the footer and lighter body text */
+        <style>
+            /* GLOBAL STYLES
+        -------------------------------------------------- */
+            /* Padding below the footer and lighter body text */
 
-    body {
-        color: #5a5a5a;
-    }
-
-
-    /* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-    /* Carousel base class */
-    .carousel {
-        margin-bottom: 4rem;
-    }
-
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-        bottom: 3rem;
-        z-index: 10;
-        color: white;
-        text-shadow: 2px 2px 5px black;
-
-    }
+            body {
+                color: #5a5a5a;
+            }
 
 
-    /* Declare heights because of positioning of img element */
-    .carousel-item {
-        height: 42rem;
-    }
+            /* CUSTOMIZE THE CAROUSEL
+        -------------------------------------------------- */
 
-    .carousel-item>img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        height: 42rem;
-    }
+            /* Carousel base class */
+            .carousel {
+                margin-bottom: 4rem;
+            }
 
+            /* Since positioning the image, we need to help out the caption */
+            .carousel-caption {
+                bottom: 3rem;
+                z-index: 10;
+                color: white;
+                text-shadow: 2px 2px 5px black;
 
-    /* MARKETING CONTENT
--------------------------------------------------- */
-
-    /* Center align the text within the three columns below the carousel */
-    .marketing .col-lg-4 {
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .marketing h2 {
-        font-weight: 400;
-    }
-
-    .marketing .col-lg-4 p {
-        margin-right: .75rem;
-        margin-left: .75rem;
-    }
+            }
 
 
-    /* Featurettes
-------------------------- */
+            /* Declare heights because of positioning of img element */
+            .carousel-item {
+                height: 42rem;
+            }
 
-    .featurette-divider {
-        margin: 5rem 0;
-        /* Space out the Bootstrap <hr> more */
-    }
-
-    /* Thin out the marketing headings */
-    .featurette-heading {
-        font-weight: 300;
-        line-height: 1;
-        letter-spacing: -.05rem;
-    }
+            .carousel-item>img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                height: 42rem;
+            }
 
 
-    /* RESPONSIVE CSS
--------------------------------------------------- */
+            /* MARKETING CONTENT
+        -------------------------------------------------- */
 
-    @media (min-width: 40em) {
+            /* Center align the text within the three columns below the carousel */
+            .marketing .col-lg-4 {
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
 
-        /* Bump up size of carousel content */
-        .carousel-caption p {
-            margin-bottom: 1.25rem;
-            font-size: 1.25rem;
-            line-height: 1.4;
-        }
+            .marketing h2 {
+                font-weight: 400;
+            }
 
-        .featurette-heading {
-            font-size: 50px;
-        }
-    }
+            .marketing .col-lg-4 p {
+                margin-right: .75rem;
+                margin-left: .75rem;
+            }
 
-    @media (min-width: 62em) {
-        .featurette-heading {
-            margin-top: 7rem;
-        }
-    }
 
-    .hinhdaidien {
-        width: 150px;
-        height: 150px;
-    }
-</style>
+            /* Featurettes
+        ------------------------- */
+
+            .featurette-divider {
+                margin: 5rem 0;
+                /* Space out the Bootstrap <hr> more */
+            }
+
+            /* Thin out the marketing headings */
+            .featurette-heading {
+                font-weight: 300;
+                line-height: 1;
+                letter-spacing: -.05rem;
+            }
+
+
+            /* RESPONSIVE CSS
+        -------------------------------------------------- */
+
+            @media (min-width: 40em) {
+
+                /* Bump up size of carousel content */
+                .carousel-caption p {
+                    margin-bottom: 1.25rem;
+                    font-size: 1.25rem;
+                    line-height: 1.4;
+                }
+
+                .featurette-heading {
+                    font-size: 50px;
+                }
+            }
+
+            @media (min-width: 62em) {
+                .featurette-heading {
+                    margin-top: 7rem;
+                }
+            }
+
+            .hinhdaidien {
+                width: 150px;
+                height: 150px;
+            }
+        </style>
 @endsection
 @section('js')
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Lấy các phần tử cần sử dụng
-      var btnMinus = document.querySelector('.btn-number[data-type="minus"]');
-      var btnPlus = document.querySelector('.btn-number[data-type="plus"]');
-      var inputQuantity = document.getElementById('quantity');
-  
-      // Xử lý sự kiện click nút trừ
-      btnMinus.addEventListener("click", function() {
-        var currentValue = parseInt(inputQuantity.value);
-        if (currentValue > 1) {
-          inputQuantity.value = currentValue - 1;
-        }
-      });
-  
-      // Xử lý sự kiện click nút cộng
-      btnPlus.addEventListener("click", function() {
-        var currentValue = parseInt(inputQuantity.value);
-        var maxValue = parseInt(inputQuantity.getAttribute('max'));
-        if (currentValue < maxValue) {
-          inputQuantity.value = currentValue + 1;
-        }
-      });
-    });
-  </script>
+   
 @endsection

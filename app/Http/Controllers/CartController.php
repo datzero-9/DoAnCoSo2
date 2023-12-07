@@ -10,8 +10,8 @@ class CartController extends Controller
 {
     public function index(Cart $cart)
     {
-        //    dd($cart->list());
-        return view('fe.cart', compact(''));
+        // dd($cart->totalPriceAll());
+        return view('fe.cart', compact('cart'));
     }
 
     public function addCart(Request $request, Cart $cart)

@@ -91,12 +91,4 @@ class UserController extends Controller
         }
         return redirect()->route('login')->with('msg', 'Đăng kí tài khoản thành công');
     }
-
-    public function detail($slug){
-        
-        $product = Products::where('slug', $slug)->first();
-        
-        // dd($product);
-        return view('fe.detail', compact('product'));
-    }
 }

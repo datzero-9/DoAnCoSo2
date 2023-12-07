@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AccountUser;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
@@ -28,10 +29,16 @@ use App\Http\Controllers\UserController;
 Route::get('/',[HomeController::class, 'index'])->name('index');
 Route::get('/login',[UserController::class, 'login'])->name('login');
 Route::post('/login',[UserController::class, 'postLogin']);
-Route::get('/detail/{slug}',[UserController::class, 'detail'])->name('detail');
+
+Route::get('/detail/{slug}',[HomeController::class, 'detail'])->name('detail');
+
 Route::get('/register',[UserController::class, 'register'])->name('register');
 Route::post('/register',[UserController::class, 'postRegister']);
+
 Route::get('/logoutAcc',[UserController::class, 'logoutAcc'])->name('logoutAcc');
+
+Route::get('/cart',[CartController::class, 'index'])->name('cart.index');
+Route::post('/addCart',[CartController::class, 'addCart'])->name('cart.add');
 
 Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::get('/',[DashBoardController::class, 'index'])->name('admin.index');

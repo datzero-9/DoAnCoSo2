@@ -12,8 +12,7 @@
     
                 <div class="card">
                     <div class="container-fliud">
-                        <form name="frmsanphamchitiet" id="frmsanphamchitiet" method="post"
-                            action="/php/twig/frontend/giohang/themvaogiohang">
+                        
                             <input type="hidden" name="sp_ma" id="sp_ma" value="5">
                             <input type="hidden" name="sp_ten" id="sp_ten" value="Samsung Galaxy Tab 10.1 3G 16G">
                             <input type="hidden" name="sp_gia" id="sp_gia" value="10990000.00">
@@ -62,7 +61,7 @@
                                         </div>
                                         <span class="review-no">999 reviews</span>
                                     </div>
-                                    {{-- <p class="product-description">Màn hình 10.1 inch cảm ứng đa điểm</p> --}}
+                                    
                                     <small class="text-muted">Giá cũ: <s><span>{{number_format($product->sale_price)}} vnđ</span></s></small>
                                     <h4 class="price">Giá hiện tại: <span>{{number_format($product->price)}} vnđ</span></h4>
                                     <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
@@ -76,18 +75,38 @@
                                         <span class="color green"></span>
                                         <span class="color blue"></span>
                                     </h5>
-                                    <div class="form-group">
-                                        <label for="soluong">Số lượng đặt mua:</label>
-                                        <input type="number" class="form-control" id="soluong" name="soluong">
-                                    </div>
-                                    <div class="action">
-                                        <a class="add-to-cart btn btn-default" id="btnThemVaoGioHang">Thêm vào giỏ hàng</a>
-                                        <a class="like btn btn-default" href="#"><span class="fa fa-heart"></span></a>
-                                    </div>
+
+
+
+                                    <form action="{{route('cart.add')}}" method="post">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="soluong">Số lượng đặt mua:</label>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                  <button type="button" class="btn btn-default btn-number fs-5" data-type="minus" data-field="quantity">
+                                                    -
+                                                  </button>
+                                                </span>
+                                                <input type="text" id="quantity" name="quantity" class="form-control input-number " value="1" min="1" max="100" style="width: 20px;border: none;">
+                                                <span class="input-group-btn">
+                                                  <button type="button" class="btn btn-default btn-number fs-5" data-type="plus" data-field="quantity">
+                                                    +
+                                                  </button>
+                                                </span>
+                                              </div>
+                                        </div>
+                                        <input type="hidden" name="id" value="{{$product->id}}">
+                                        <div class="action mt-4">
+                                            <button type="submit" class=" btn btn-warning" >Thêm vào giỏ hàng</button>
+                                        </div>
+                                    </form>
+
+
                                 </div>
     
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
     
@@ -115,7 +134,7 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
          <!-- Custom script - Các file js do mình tự viết -->
-         <script src="/js/app.js"></script>
+        
     </div>
     <!--  -->
 @endsection
@@ -385,5 +404,30 @@
         smallImgs[3].classList.remove('sm-card')
         smallImgs[4].classList.add('sm-card')
     })
+</script>
+<script>
+     document.addEventListener("DOMContentLoaded", function() {
+      // Lấy các phần tử cần sử dụng
+      var btnMinus = document.querySelector('.btn-number[data-type="minus"]');
+      var btnPlus = document.querySelector('.btn-number[data-type="plus"]');
+      var inputQuantity = document.getElementById('quantity');
+  
+      // Xử lý sự kiện click nút trừ
+      btnMinus.addEventListener("click", function() {
+        var currentValue = parseInt(inputQuantity.value);
+        if (currentValue > 1) {
+          inputQuantity.value = currentValue - 1;
+        }
+      });
+  
+      // Xử lý sự kiện click nút cộng
+      btnPlus.addEventListener("click", function() {
+        var currentValue = parseInt(inputQuantity.value);
+        var maxValue = parseInt(inputQuantity.getAttribute('max'));
+        if (currentValue < maxValue) {
+          inputQuantity.value = currentValue + 1;
+        }
+      });
+    });
 </script>
 @endsection

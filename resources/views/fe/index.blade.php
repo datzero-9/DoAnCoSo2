@@ -146,7 +146,7 @@
 @yield('main')
     <!-- đây là phần footer  -->
 @include('fe.layouts.footer')
-    
+    @yield('js')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var slideshow = document.getElementById('slideshow');

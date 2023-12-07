@@ -1,0 +1,62 @@
+@extends('admin.master')
+@section('title')
+Admin | category
+@endsection 
+
+@section('title-page')
+Danh sách sản phẩm
+@endsection 
+
+@section('content')
+
+<div class="content">
+<a href="{{route('category.create')}}" class="btn btn-success">Thêm danh mục mới +</a>
+
+  @if (session('msg'))
+  <div class="alert alert-success my-5 text-center">{{session('msg')}}</div>   
+  @endif
+
+   <hr>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="5%">STT</th>
+            <th>Tên danh mục</th>
+            <th>parent-id</th>
+            <th>Thời gian tạo</th>
+            <th width="15%">Trạng thái</th>
+            <th width="5%">Edit</th>
+            <th width="5%">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+      @forelse ($categories as $item)
+      <tr>
+        
+        <td>{{$loop->iteration}}</td>
+        <td>{{$item->name}}</td>
+        <td>{{$item->parent_id}}</td>
+        <td>{{$item->created_at}}</td>
+        <td> {!!$item->status ? '<span class="btn btn-success"> hiện  </span>':'<span class="btn btn-danger"> ẩn </span>'!!} </td>
+        <td><a href="{{route('category.edit',$item)}}" class="btn btn-info">sua</a></td>
+        <td> 
+          <form action="{{route('category.destroy',$item)}}" method="POST">
+            @method('DELETE')
+            @csrf
+        <button type="submit"  onclick="return confirm('Do you want delete User ?')" class="btn btn-danger">xóa</button>      
+        </form></td>  
+    </tr>
+      @empty
+          <span>don't exist data</span>
+      @endforelse
+        
+      
+    
+     
+    </tbody>
+    </table>
+
+      {{$categories->links()}}
+</div>
+
+@endsection

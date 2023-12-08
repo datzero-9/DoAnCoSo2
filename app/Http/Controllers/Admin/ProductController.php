@@ -36,7 +36,7 @@ class ProductController extends Controller
     {
 
         $rules = [
-            'name' => 'required|unique:products',
+            'name' => 'required',
             'slug' => 'required|unique:products',
             'price' => 'required|integer',
             'sale_price' => 'required|integer',
@@ -46,7 +46,6 @@ class ProductController extends Controller
 
         $message = [
             'name.required' => 'vui lòng nhập tên sản phẩm ',
-            'name.unique' => 'Sản phẩm này đã tồn tại trên hệ thống',
 
             'slug.required' => 'vui lòng nhập đường dẫn ',
             'slug.unique' => 'Đường dẫn này đã tồn tại trên hệ thống',

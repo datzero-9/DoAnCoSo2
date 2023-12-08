@@ -230,7 +230,8 @@ flex-direction: column;
   margin-bottom: 3px;
 }
 .slider-content-right li img {
-  width: 170px;
+  border: 1px solid #333;
+  width: 160px;
   height: 170px; 
 }
 .slider-content-left-top-btn{

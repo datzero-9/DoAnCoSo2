@@ -34,7 +34,7 @@
                                     <ul class="preview-thumbnail nav nav-tabs">
                                         <li class="active">
                                             <a data-target="#pic-1" data-toggle="tab" class="">
-                                                <img src="../assets/img/product/samsung-galaxy-tab-10.jpg">
+                                                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=c0.22.843.843a_cp6_dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=BEicB11KmK4AX9iBCaN&_nc_oc=AQnROkTH1jmrCu4aF4RRQCbVgQHQg7EA08bjdIqUSXpnYLCZbmIxi6A5ZxGk4a6uarUwY5lu9bVagxCbvYAvANJx&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfAdIt80iB1JJu5M-78IdZDDwL0FI3ZCwr9TvrsPTmdrhA&oe=6578B6E1">
                                             </a>
                                         </li>
                                         <li class="">
@@ -62,8 +62,8 @@
                                         <span class="review-no">999 reviews</span>
                                     </div>
                                     
-                                    <small class="text-muted">Giá cũ: <s><span>{{number_format($product->price)}} vnđ</span></s></small>
-                                    <h4 class="price">Giá hiện tại: <span>{{number_format($product->sale_price)}} vnđ</span></h4>
+                                    <small class="text-muted">Giá cũ: <s><span>{{number_format($product->sale_price) > 0 ? number_format($product->price) : 'Chưa giảm giá lần nào'}} vnđ</span></s></small>
+                                    <h4 class="price">Giá hiện tại: <span>{{number_format($product->sale_price) > 0 ? number_format($product->sale_price) : number_format($product->price) }} vnđ</span></h4>
                                     <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
                                         <strong>Uy
                                             tín</strong>!

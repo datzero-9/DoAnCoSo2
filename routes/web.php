@@ -42,6 +42,11 @@ Route::post('/addCart',[CartController::class, 'addCart'])->name('cart.add');
 
 Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::get('/',[DashBoardController::class, 'index'])->name('admin.index');
+    Route::get('/laptop',[DashBoardController::class, 'laptop'])->name('admin.laptop');
+    Route::get('/tainghe',[DashBoardController::class, 'tainghe'])->name('admin.tainghe');
+    Route::get('/banphim',[DashBoardController::class, 'banphim'])->name('admin.banphim');
+    Route::get('/manhinh',[DashBoardController::class, 'manhinh'])->name('admin.manhinh');
+    Route::get('/chuot',[DashBoardController::class, 'chuot'])->name('admin.chuot');
     // Route::get('/login',[DashBoardController::class, 'login'])->name('admin.login');
     Route::resource('category',CategoryController::class);
     Route::resource('product',ProductController::class);

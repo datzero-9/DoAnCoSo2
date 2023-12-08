@@ -20,6 +20,6 @@ class CartController extends Controller
         $quantity = $request->quantity;
         $cart->add($product, $quantity);
         
-        return redirect()->back();
+        return redirect()->route('cart.index');
     }
 }

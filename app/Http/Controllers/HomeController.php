@@ -12,17 +12,13 @@ class HomeController extends Controller
     {
 
         $hotproducts = Products::where('stock', 1)->get();
-        // $hotproducts = Products::where('name',0)->get();
-        // $hotproducts = Products::where('stock',1)->get();
-        // dd($hotproducts);
-        $category = Category::where('parent_id', 0)->get();
-
-        return view('fe.home', compact('hotproducts', 'category'));
+        $allProduct = Products::where('stock',0)->get();
+        // dd($allProduct);
+        return view('fe.home', compact('hotproducts', 'allProduct'));
     }
 
     public function detail($slug)
     {
-
         $product = Products::where('slug', $slug)->first();
 
         // dd($product);

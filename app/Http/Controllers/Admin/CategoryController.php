@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 // use App\Http\Requests\Category\StoreCategoryRequest;
 
 
@@ -121,7 +122,14 @@ class CategoryController extends Controller
     {
        
         try {
+            DB::statement("SET FOREIGN_KEY_CHECKS=0");
+
+            // Xóa sản phẩm
             $category->delete();
+
+            // Kích hoạt lại ràng buộc khóa ngoại
+            DB::statement("SET FOREIGN_KEY_CHECKS=1");
+            
             return redirect()->route('category.index')->with('msg', 'xóa thành công ');
         } catch (\Throwable $th) {
             return redirect()->back()->with('msg', 'xóa không thành công ');

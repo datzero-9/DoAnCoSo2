@@ -13,9 +13,27 @@
     <style>
         a {
             text-decoration: none;
+            color: #333;
+        }
+        .login {
+            background-color: #ffb700;
+        }
+        .nav_thongbao>div>a>i {
             color: #ffb700;
+            transition: .5s;
+
         }
 
+        .nav_giohang>div>a>i {
+            color: #ffb700;
+            transition: .5s;
+        }
+
+        .nav_call>div>a>i {
+            color: #ffb700;
+            transition: .5s;
+
+        }
         .nav_thongbao:hover>div>a>i {
             color: red;
             transition: .5s;

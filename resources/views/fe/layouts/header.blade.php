@@ -1,21 +1,21 @@
 <header class="">
-    <section class="login bg-dark text-white ">
+    <section class="login  text-dark ">
         <div class="container">
             <div class="row">
                 @if (Auth::check())
-                <div class="row">
-                    <div class="col-4"><b>Xin chào {{Auth::User()->name}}</b></div>
-                    <div class="col-8"><a href="{{route('logoutAcc')}}">| Đăng xuất</a></div>
+                <div class="d-flex justify-content-end text-end">
+                    <div class="mx-4">Xin chào - <b>{{Auth::User()->name}}</b></div>
+                    <div class=""><a href="{{route('logoutAcc')}}">| Đăng xuất</a></div>                    
                 </div>
-                
+
                 @else
                 <div class="col-12"><a href="{{route('login')}}">Đăng nhập</a></div>
                 @endif
-            
+
             </div>
         </div>
     </section>
-    {{-- đây là thanh tìm kiếm  --}}
+    {{-- đây là thanh tìm kiếm --}}
     <section class="myheader bg-dark py-2">
         <div class="container ">
             <div class="row">
@@ -68,7 +68,7 @@
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {{$cart->totalQuantity()}}
-                               
+
                             </span>
                         </div>
 
@@ -78,7 +78,7 @@
             </div>
         </div>
     </section>
-    {{-- đây là menu  --}}
+    {{-- đây là menu --}}
     <section class="py-3 navbarjs">
 
         <div class="container navd">

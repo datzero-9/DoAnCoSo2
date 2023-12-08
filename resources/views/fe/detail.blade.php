@@ -88,7 +88,7 @@
                                                     -
                                                   </button>
                                                 </span>
-                                                <input type="text" id="quantity" name="quantity" class="form-control input-number " value="1" min="1" max="100" style="width: 20px;border: none;">
+                                                <input type="text" id="quantity" name="quantity" class="form-control input-number " value="{{old('quantity') ? old('quantity') : 1}}" min="1" max="100" style="width: 20px;border: none;">
                                                 <span class="input-group-btn">
                                                   <button type="button" class="btn btn-default btn-number fs-5" data-type="plus" data-field="quantity">
                                                     +

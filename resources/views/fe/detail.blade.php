@@ -115,7 +115,7 @@
                         <h3>Thông tin chi tiết về Sản phẩm</h3>
                         <div class="row">
                             <div class="col">
-                               {{$product->description}}
+                               {!!$product->description!!}
                             </div>
                         </div>
                     </div>

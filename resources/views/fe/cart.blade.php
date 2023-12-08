@@ -11,7 +11,7 @@
                 </button>
             </div>
 
-            <h1 class="text-center">Giỏ hàng</h1>
+            <h2 class="text-start">Giỏ hàng</h2>
             <div class="row">
                 <div class="col col-md-12">
                     <table class="table table-bordered">
@@ -57,14 +57,11 @@
                         <div class="d-flex justify-content-end  align-items-center">
                             
                             <b class="mx-2"><a href="" class="text-dark">Tổng tiền: {{number_format($cart->totalPriceAll())}}</a></b>
-                            <button type="submit" class="btn btn-warning">Mua ngay</button>
+                            <a href="" class="btn btn-warning "><i class="fa fa-shopping-cart"
+                                aria-hidden="true"></i>&nbsp;Thanh toán</a>
                         </div>
                     </section>
-                    <a href="" class="btn btn-warning btn-md"><i class="fa fa-arrow-left"
-                            aria-hidden="true"></i>&nbsp;Quay
-                        về trang chủ</a>
-                    <a href="" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart"
-                            aria-hidden="true"></i>&nbsp;Thanh toán</a>
+                   
                 </div>
             </div>
         </div>
@@ -85,24 +82,14 @@
 @endsection
 @section('css')
         <style>
-            /* GLOBAL STYLES
-        -------------------------------------------------- */
-            /* Padding below the footer and lighter body text */
+         
 
             body {
                 color: #5a5a5a;
             }
-
-
-            /* CUSTOMIZE THE CAROUSEL
-        -------------------------------------------------- */
-
-            /* Carousel base class */
             .carousel {
                 margin-bottom: 4rem;
             }
-
-            /* Since positioning the image, we need to help out the caption */
             .carousel-caption {
                 bottom: 3rem;
                 z-index: 10;
@@ -111,8 +98,6 @@
 
             }
 
-
-            /* Declare heights because of positioning of img element */
             .carousel-item {
                 height: 42rem;
             }
@@ -124,12 +109,6 @@
                 min-width: 100%;
                 height: 42rem;
             }
-
-
-            /* MARKETING CONTENT
-        -------------------------------------------------- */
-
-            /* Center align the text within the three columns below the carousel */
             .marketing .col-lg-4 {
                 margin-bottom: 1.5rem;
                 text-align: center;
@@ -143,30 +122,16 @@
                 margin-right: .75rem;
                 margin-left: .75rem;
             }
-
-
-            /* Featurettes
-        ------------------------- */
-
             .featurette-divider {
                 margin: 5rem 0;
-                /* Space out the Bootstrap <hr> more */
             }
 
-            /* Thin out the marketing headings */
             .featurette-heading {
                 font-weight: 300;
                 line-height: 1;
                 letter-spacing: -.05rem;
             }
-
-
-            /* RESPONSIVE CSS
-        -------------------------------------------------- */
-
             @media (min-width: 40em) {
-
-                /* Bump up size of carousel content */
                 .carousel-caption p {
                     margin-bottom: 1.25rem;
                     font-size: 1.25rem;

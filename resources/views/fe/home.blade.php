@@ -1,41 +1,65 @@
 @extends('fe.index')
-
+@section('css')
+    <style>
+        .nameproduct {
+            color: black;
+            text-decoration: none;
+        }
+        .imgproduct {
+            width: 100%;
+            height: 160px;
+        }
+    </style>
+@endsection
 @section('main')
-<section class="mymaincontent mt-1 ">
-    <div class="container">
-        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
-            <div class="carousel-inner">
-                <div class="carousel-item active ">
-                    <img src="//bizweb.dktcdn.net/thumb/grande/100/493/970/themes/923518/assets/slider_1.jpg?1700473522200"
-                        class="d-block w-100" alt="...">
+<main>
+    <a href="#"><img class="avatar" src="https://cdn.tgdd.vn/2023/11/banner/Laptop-HP-720-220-720x220-1.png"
+            alt=""></a>
+    <section class="slider">
+        <div class="container container3">
+
+            <div class="slider-content">
+
+                <div class="slider-content-left">
+                    <div class="slider-content-left-top-container">
+                        <div class="slider-content-left-top">
+                            <a href="#"><img src="/images/slider1.webp" alt=""></a>
+                            <a href="#"><img src="/images/slider2.webp" alt=""></a>
+                            <a href="#"><img src="/images/slider3.webp" alt=""></a>
+                            <a href="#"><img src="/images/slider4.webp" alt=""></a>
+                            <a href="#"><img src="/images/slider5.webp" alt=""></a>
+
+                        </div>
+                        <div class="slider-content-left-top-btn">
+                            <i class='bx bx-chevron-left'></i>
+                            <i class='bx bx-chevron-right'></i>
+                        </div>
+                    </div>
+                    <div class="slider-content-left-bottom">
+                        <li class="active">Laptop</li>
+                        <li>Màn hình</li>
+                        <li>Bàn phím</li>
+                        <li>Chuột</li>
+                        <li>Tai nghe</li>
+
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="//bizweb.dktcdn.net/thumb/grande/100/493/970/themes/923518/assets/slider_1.jpg?1700473522200"
-                        class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="//bizweb.dktcdn.net/thumb/grande/100/493/970/themes/923518/assets/slider_1.jpg?1700473522200"
-                        class="d-block w-100" alt="...">
+
+                <div class="slider-content-right">
+                    <li><img src="/images/anh1.webp" alt=""></li>
+                    <li><img src="/images/anh2.webp" alt=""></li>
+                    <li><img src="/images/anh3.webp" alt=""></li>
+                    <li><img src="/images/anh4.webp" alt=""></li>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Sau</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Trước</span>
-            </button>
         </div>
-    </div>
-</section>
-<div class="laptop container">
+    </section>
+</main>
+<div class="laptop container mt-3">
     
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Danh sách Sản phẩm</h1>
+            <h2 class="jumbotron-heading">Danh sách Sản phẩm</h2>
             <p class="lead text-muted">Các sản phẩm với chất lượng, uy tín, cam kết từ nhà Sản xuất, phân phối và
                 bảo hành
                 chính hãng.</p>
@@ -50,8 +74,8 @@
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
                         <a href="#" class="position-relative">
-                            <img class=" card-img-top img-fluid 
-                            " width="100%" height="400" src="{{asset('storage/images')}}/{{$item->image}}">
+                            <img class="card-img-top img-fluid imgproduct 
+                            " src="{{asset('storage/images')}}/{{$item->image}}">
                             <button type="submit" class="border border-0 position-absolute start-0 bg-success rounded-end-circle" style="width:60px;top:5px;borber:none;"><b>Hot</b></button>
                             @if ($item->sale_price)
                                 
@@ -60,7 +84,7 @@
                             @endif
                         </a>
                         <div class="card-body">
-                            <a href="#">
+                            <a href="#" class="nameproduct">
                                 <h6 class="fs-5">{{$item->name}}</h6>
                             </a>
                             <h6>Thương hiệu: {{$item->category->name}}</h6>                            
@@ -95,5 +119,61 @@
     </div>
 
 </div>
+@endsection
+@section('js')
+        <script>
+            const rightBtn = document.querySelector('.bx-chevron-right')
+    const leftBtn = document.querySelector('.bx-chevron-left')
+    var index = 0;
+    const imgNumber = document.querySelectorAll('.slider-content-left-top img')
+    max = imgNumber.length;
+
+    //silder
+    rightBtn.addEventListener('click', function () {
+        document.querySelector('.slider-content-left-top').style.right = index * 100 + "%"
+        index = index + 1
+        if (index > max - 1) {
+            index = 0;
+        }
+    })
+
+    leftBtn.addEventListener('click', function () {
+        document.querySelector('.slider-content-left-top').style.right = index * 100 + "%"
+        index = index - 1
+        if (index < 0) {
+            index = max - 1;
+        }
+    })
+
+    //slider trượt khi click
+    const listClick = document.querySelectorAll('.slider-content-left-bottom li')
+
+
+    listClick.forEach(function (image, index) {
+        image.addEventListener('click', function () {
+            document.querySelector('.slider-content-left-top').style.right = index * 100 + "%"
+            removeActive()
+            image.classList.add('active')
+        })
+    })
+    function removeActive() {
+        let imagActive = document.querySelector('.active')
+        imagActive.classList.remove('active')
+    }
+    //slide tự trượt
+    function imgAuto() {
+        index = index + 1;
+        
+        if (index > max - 1) {
+            index = 0;
+        }
+        removeActive()
+        document.querySelector('.slider-content-left-top').style.right = index * 100 + "%"
+        // console.log(index)
+        listClick[index].classList.add('active')
+    }
+
+    setInterval(imgAuto, 3000);
+    </script>
 @endsection
 

@@ -307,7 +307,17 @@ overflow: hidden;
       <i class='bx bx-phone-call'></i>
       <a href="">Gọi mua hàng <br>0356031160</a>
   </li>
-  <li><a href="{{route('cart.index')}}">Giỏ hàng </a><i class='bx bx-cart-alt'></i></li>
+  <li>
+  <a href="{{route('cart.index')}}">Giỏ hàng 
+    <div type="button" class="position-relative">
+        <a href=""> <i class='bx bxs-cart-alt fs-5'></i></a>
+        <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{$cart->totalQuantity()}}
+        </span>
+    </div>
+  </a>
+</li>
   <li>
           <a href="">Cửa hàng</a><i class='bx bxs-location-plus'></i></option>   
   </li>

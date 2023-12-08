@@ -11,12 +11,15 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   private $product;
+   public function __construct()
+   {
+    $this->product = new Products();
+   
+   }
     public function index()
     {
-        $products = Products::orderBy('created_at','desc')->get();
+        $products = $this->product->getAll();
         return view('admin.product.index', compact('products'));
     }
 

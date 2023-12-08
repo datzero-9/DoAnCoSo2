@@ -68,6 +68,7 @@ Danh sách sản phẩm
         </tbody>
   </table>
 
+ {{$products->links()}}
      
 </div>
 

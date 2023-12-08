@@ -11,8 +11,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        $hotproducts = Products::where('stock', 1)->get();
-        $allProduct = Products::where('stock',0)->get();
+        $hotproducts = Products::where('stock', 1)->paginate(4);
+        $allProduct = Products::where('stock',0)->paginate(6);
         // dd($allProduct);
         return view('fe.home', compact('hotproducts', 'allProduct'));
     }

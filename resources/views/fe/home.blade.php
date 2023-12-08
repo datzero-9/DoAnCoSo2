@@ -14,8 +14,8 @@
 @endsection
 @section('main')
 <main>
-    <a href="#"><img class="avatar" src="https://cdn.tgdd.vn/2023/11/banner/Laptop-HP-720-220-720x220-1.png"
-            alt=""></a>
+    {{-- <a href="#"><img class="avatar" src="https://cdn.tgdd.vn/2023/11/banner/Laptop-HP-720-220-720x220-1.png"
+            alt=""></a> --}}
     <section class="slider">
         <div class="container container3">
 
@@ -93,11 +93,11 @@
                                 <small class="text-muted text-right">
                                     <h6>Giá: </h6>
                                     @if ($item->sale_price > 0)
-                                    <s>{{number_format($item->price)}} VND</s> -
-                                    <b>{{number_format($item->sale_price)}} VND</b> 
+                                    <s>đ{{number_format($item->price)}} </s> -
+                                    <b>đ{{number_format($item->sale_price)}}</b> 
                                     
                                     @else
-                                    <b>{{number_format($item->price)}} VND</b>
+                                    <b>đ{{number_format($item->price)}} </b>
                                     @endif   
                                 </small>   
                             </div>
@@ -108,7 +108,9 @@
                         </div>
                     </div>
                 </div>  
-                @endforeach          
+                @endforeach   
+                {{$hotproducts->links()}}       
+
             </div><hr>
 
             <div class="row">
@@ -128,18 +130,18 @@
                         </a>
                         <div class="card-body">
                             <a href="#" class="nameproduct">
-                                <h6 class="fs-5">{{$item->name}}</h6>
+                                <h6 class="">{{$item->name}}</h6>
                             </a>
                             <h6>Thương hiệu: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted text-right">
                                     <h6>Giá: </h6>
                                     @if ($item->sale_price > 0)
-                                    <s>{{number_format($item->price)}} VND</s> -
-                                    <b>{{number_format($item->sale_price)}} VND</b> 
+                                    <s>đ{{number_format($item->price)}} </s> -
+                                    <b>đ{{number_format($item->sale_price)}} </b> 
                                     
                                     @else
-                                    <b>{{number_format($item->price)}} VND</b>
+                                    <b>đ{{number_format($item->price)}} </b>
                                     @endif   
                                 </small>   
                             </div>
@@ -151,7 +153,7 @@
                     </div>
                 </div> 
                 @endforeach
-                          
+                {{$allProduct->links()}}       
             </div><hr>
         </div>
     </div>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use App\Models\Products;
+
 // use App\Http\Requests\Category\StoreCategoryRequest;
 
 

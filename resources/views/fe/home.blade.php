@@ -130,7 +130,7 @@
                             <a href="#" class="nameproduct">
                                 <h6 class="fs-5">{{$item->name}}</h6>
                             </a>
-                            <h6>Thương hiệu: {{$item->category->name}}</h6>                            
+                            <h6>Thương hiệu: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted text-right">
                                     <h6>Giá: </h6>

@@ -42,7 +42,7 @@ Danh sách sản phẩm
               <td>{{$item->name}}</td>
               <td>{{$item->price}}</td>
               <td>{{$item->sale_price}}</td>
-              <td>{{$item->category->name}}</td>
+              <td>{{$item->category->name ?? 'none'}}</td>
               <td>
                 <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="200px">
               </td>

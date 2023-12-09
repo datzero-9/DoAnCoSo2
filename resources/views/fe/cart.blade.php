@@ -10,7 +10,9 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-
+                    @if (session('msg'))
+                        <div class="alert alert-warning text-center">{{session('msg')}}</div>
+                    @endif
             <h2 class="text-start">Giỏ hàng</h2>
             <div class="row">
                 <div class="col col-md-12">
@@ -27,39 +29,63 @@
                             </tr>
                         </thead>
                         <tbody id="datarow">
-                            @foreach ($cart->list() as $item => $value)
-                            
+                            @foreach ($cart->list() as $items => $value )
                             <tr>
-                                <td>1</td>
+                                <td>{{$loop->iteration}}</td>
                                 <td>
                                  <img src="{{asset('storage/images')}}/{{$value['image']}}" class="hinhdaidien">
                                 </td>
                                 <td>{{$value['name']}}</td>
-                                <td class="text-right">
+                                {{-- <td class="text-right">
                                     <div class="input-group">
-                                        {{$value['quantity']}}
+                                        <form action="{{route('updatecart.index',$value['id'])}}" method="get">
+
+                                            @php
+                                            $value['quantity']
+                                            @endphp
+                                            <input type="number" style="width: 60px;" name="quantity" value="{{$value['quantity']}}">
+                                            <button type="submit" style="border: none;">xác nhận</button>
+                                        </form>
                                       </div>
-                                </td>
+                                </td> --}}
+                                <td>{{$value['quantity']}}</td>
                                 <td>{{number_format($value['price'])}}</td>
-                                <td class="text-right">{{number_format($value['price']*$value['quantity'])}}</td>
+                                <td class="text-right">{{number_format($value['quantity'] * $value['price'])}}</td>
                                 
                                 <td>
                                     <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                    <a id="delete_1" data-sp-ma="2" class="btn btn-danger btn-delete-sanpham">
+                                    <a href="{{route('deletecart.index',$value['id'])}}" onclick="confirm('xóa sản phẩm trong giỏ hàng')"  class="btn btn-danger ">
                                         <i class="fa fa-trash" aria-hidden="true"></i> Xóa
                                     </a>
                                 </td>
                             </tr>
                             @endforeach
+                            <tr>
+                                <th colspan="6" class="text-end">Số lượng:</th>
+                                <th colspan="1" class="text-right">{{number_format($cart->totalquantity)}}</th>
+                            </tr> 
+                            <tr class="">
+                                <th colspan="6" class="text-end">Tổng tiền:</th>
+                                <th colspan="1" class="text-right">{{number_format($cart->totalprice)}} VND</th>
+                            </tr>
                         </tbody>
                     </table>
-                    <section class="totalAllProduct my-2">
-                        <div class="d-flex justify-content-end  align-items-center">
-                            
-                            <b class="mx-2"><a href="" class="text-dark">Tổng tiền: {{number_format($cart->totalPriceAll())}}</a></b>
+                   
+                    <section class="totalAllProduct my-2 d-flex  justify-content-end  align-items-center">
+                        @if ($cart->totalquantity > 0)
+                        <a href="{{route('index')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i>&nbsp;Tiếp tục mua hàng</a>
+
+                           <a href="{{route('clear.cart')}}" onclick="confirm('bạn có muốn xóa sạch giỏ hàng ')" class="btn btn-danger mx-5 "><i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i>&nbsp;Xóa hết giỏ hàng </a>
                             <a href="" class="btn btn-warning "><i class="fa fa-shopping-cart"
                                 aria-hidden="true"></i>&nbsp;Thanh toán</a>
-                        </div>
+                        @else
+                        <a href="{{route('index')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i>&nbsp;Tiếp tục mua hàng</a>
+                        @endif
+                       
+                        
                     </section>
                    
                 </div>
@@ -151,7 +177,7 @@
 
             .hinhdaidien {
                 width: 150px;
-                height: 150px;
+                height: 100px;
             }
         </style>
 @endsection

@@ -39,12 +39,13 @@
                                         </li>
                                         <li class="">
                                             <a data-target="#pic-2" data-toggle="tab" class="">
-                                                <img src="../assets/img/product/samsung-galaxy-tab.jpg">
+                                                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=c0.22.843.843a_cp6_dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=BEicB11KmK4AX9iBCaN&_nc_oc=AQnROkTH1jmrCu4aF4RRQCbVgQHQg7EA08bjdIqUSXpnYLCZbmIxi6A5ZxGk4a6uarUwY5lu9bVagxCbvYAvANJx&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfAdIt80iB1JJu5M-78IdZDDwL0FI3ZCwr9TvrsPTmdrhA&oe=6578B6E1">
                                             </a>
                                         </li>
                                         <li class="">
                                             <a data-target="#pic-3" data-toggle="tab" class="active">
-                                                <img src="../assets/img/product/samsung-galaxy-tab-4.jpg">
+                                                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=c0.22.843.843a_cp6_dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=BEicB11KmK4AX9iBCaN&_nc_oc=AQnROkTH1jmrCu4aF4RRQCbVgQHQg7EA08bjdIqUSXpnYLCZbmIxi6A5ZxGk4a6uarUwY5lu9bVagxCbvYAvANJx&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfAdIt80iB1JJu5M-78IdZDDwL0FI3ZCwr9TvrsPTmdrhA&oe=6578B6E1">
+
                                             </a>
                                         </li>
                                     </ul>
@@ -88,7 +89,7 @@
                                                     -
                                                   </button>
                                                 </span>
-                                                <input type="text" id="quantity" name="quantity" class="form-control input-number " value="{{old('quantity') ? old('quantity') : 1}}" min="1" max="100" style="width: 20px;border: none;">
+                                                <input type="text" id="quantity" name="quantity" class="text-center " value="{{old('quantity') ? old('quantity') : 1}}" min="1" max="100" style="width:70px;border: none;">
                                                 <span class="input-group-btn">
                                                   <button type="button" class="btn btn-default btn-number fs-5" data-type="plus" data-field="quantity">
                                                     +
@@ -140,7 +141,8 @@
 @endsection
 @section('css')
     <style>
-                    img {
+
+             img {
                 max-width: 100%;
             }
 

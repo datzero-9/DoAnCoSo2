@@ -26,30 +26,27 @@ use App\Http\Controllers\UserController;
 //     \UniSharp\LaravelFilemanager\Lfm::routes();
 // });
 
-Route::get('/',[HomeController::class, 'index'])->name('index');
-Route::get('/login',[UserController::class, 'login'])->name('login');
-Route::post('/login',[UserController::class, 'postLogin']);
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'postLogin']);
 
-Route::get('/detail/{slug}',[HomeController::class, 'detail'])->name('detail');
+Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
 
-Route::get('/register',[UserController::class, 'register'])->name('register');
-Route::post('/register',[UserController::class, 'postRegister']);
+Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::post('/register', [UserController::class, 'postRegister']);
+Route::get('/logoutAcc', [UserController::class, 'logoutAcc'])->name('logoutAcc');
 
-Route::get('/logoutAcc',[UserController::class, 'logoutAcc'])->name('logoutAcc');
+Route::prefix('/cart')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/deletecart{id}', [CartController::class, 'deleteCart'])->name('deletecart.index');
+    // Route::get('/update{id}', [CartController::class, 'updateCart'])->name('updatecart.index');
+    Route::post('/addCart', [CartController::class, 'addCart'])->name('cart.add');
+    Route::get('/clearcart', [CartController::class, 'clearCart'])->name('clear.cart');
+});
 
-Route::get('/cart',[CartController::class, 'index'])->name('cart.index');
-Route::post('/addCart',[CartController::class, 'addCart'])->name('cart.add');
-
-Route::prefix('/admin')->middleware('admin')->group(function(){
-    Route::get('/',[DashBoardController::class, 'index'])->name('admin.index');
-    Route::get('/laptop',[DashBoardController::class, 'laptop'])->name('admin.laptop');
-    Route::get('/tainghe',[DashBoardController::class, 'tainghe'])->name('admin.tainghe');
-    Route::get('/banphim',[DashBoardController::class, 'banphim'])->name('admin.banphim');
-    Route::get('/manhinh',[DashBoardController::class, 'manhinh'])->name('admin.manhinh');
-    Route::get('/chuot',[DashBoardController::class, 'chuot'])->name('admin.chuot');
-    // Route::get('/login',[DashBoardController::class, 'login'])->name('admin.login');
-    Route::resource('category',CategoryController::class);
-    Route::resource('product',ProductController::class);
-    Route::resource('accountuser',AccountUser::class);
-
+Route::prefix('/admin')->middleware('admin')->group(function () {
+    Route::get('/', [DashBoardController::class, 'index'])->name('admin.index');
+    Route::resource('category', CategoryController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('accountuser', AccountUser::class);
 });

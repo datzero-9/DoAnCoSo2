@@ -313,7 +313,7 @@ overflow: hidden;
         <a href=""> <i class='bx bxs-cart-alt fs-5'></i></a>
         <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{$cart->totalQuantity()}}
+            {{$cart->totalquantity}}
         </span>
     </div>
   </a>

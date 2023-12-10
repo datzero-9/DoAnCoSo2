@@ -331,7 +331,7 @@ overflow: hidden;
 </nav>
 <div class="container container1">
 <ul style="padding: 0;">
-  <li><a href="{{route('index')}}"> <img
+  <li><a href="{{route('home')}}"> <img
               src="https://www.thegioididong.com/ContentMwg/images/TGDD/Store/background_sieu_thi_tgdd.png"
               alt=""></a></li>
   <li>

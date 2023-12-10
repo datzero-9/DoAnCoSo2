@@ -73,7 +73,7 @@
                    
                     <section class="totalAllProduct my-2 d-flex  justify-content-end  align-items-center">
                         @if ($cart->totalquantity > 0)
-                        <a href="{{route('index')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
+                        <a href="{{route('home')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
                             aria-hidden="true"></i>&nbsp;Tiếp tục mua hàng</a>
 
                            <a href="{{route('clear.cart')}}" onclick="confirm('bạn có muốn xóa sạch giỏ hàng ')" class="btn btn-danger mx-5 "><i class="fa fa-shopping-cart"
@@ -81,7 +81,7 @@
                             <a href="" class="btn btn-warning "><i class="fa fa-shopping-cart"
                                 aria-hidden="true"></i>&nbsp;Thanh toán</a>
                         @else
-                        <a href="{{route('index')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
+                        <a href="{{route('home')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
                             aria-hidden="true"></i>&nbsp;Tiếp tục mua hàng</a>
                         @endif
                        

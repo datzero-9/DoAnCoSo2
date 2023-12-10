@@ -41,7 +41,7 @@
                 <div class="alert alert-success text-center"> {{session('msg')}}</div>
             @endif
             @if (session('error'))
-            <div class="alert alert-danger text-center"> {{session('error')}}</div>
+            <div class="alert alert-danger text-center"> <strong>{{session('error')}}</strong></div>
         @endif
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label">Email:</label>

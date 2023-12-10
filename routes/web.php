@@ -26,19 +26,17 @@ use App\Http\Controllers\UserController;
 //     \UniSharp\LaravelFilemanager\Lfm::routes();
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
+
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'postLogin']);
-
-Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
-
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'postRegister']);
 Route::get('/logoutAcc', [UserController::class, 'logoutAcc'])->name('logoutAcc');
 
-Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
-
-Route::prefix('/cart')->group(function () {
+Route::prefix('/')->middleware('user')->group(function () {
+    Route::get('/homepage', [HomeController::class, 'index'])->name('home');
+    Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
+    Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::get('/deletecart{id}', [CartController::class, 'deleteCart'])->name('deletecart.index');
     // Route::get('/update{id}', [CartController::class, 'updateCart'])->name('updatecart.index');

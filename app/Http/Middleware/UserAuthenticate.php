@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
-class AdminAuthenticate
+use Illuminate\Support\Facades\Auth;
+class UserAuthenticate
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,9 @@ class AdminAuthenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role == 1) {
+        if (Auth::check()) {
             return $next($request);
         }
-        return redirect()->route('login')->with('error','Để vào admin cần đăng nhập');
+        return redirect()->route('login');
     }
 }

@@ -41,7 +41,7 @@ class UserController extends Controller
         //thêm tài khoản
 
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password,'role'=>0])) {
-            return redirect()->route('index');
+            return redirect()->route('home');
         } else if(Auth::attempt(['email' => $req->email, 'password' => $req->password,'role'=>1])) {
             return redirect()->route('admin.index');
         }else{

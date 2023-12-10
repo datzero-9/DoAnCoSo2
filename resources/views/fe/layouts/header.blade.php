@@ -198,131 +198,7 @@ flex-direction: column;
 .submenu ul  li{
   margin: 0;
 }
-.slider {
-  margin-top: 20px;
-  height: 350px;
-}
-.slider-content {
-  display: flex;
-  justify-content: space-between;
-}
-.slider-content-left {
-  width: 65%;
-}
-.slider-content-left-top {
-  position: relative;
-  height: 300px;
-  width: 100%;
-}
-.slider-content-left-top img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-.slider-content-left-bottom {
-  display: flex;
-  justify-content: space-between;
-  border: 2px solid #ddd;
-  border-top: none;
-  height: 50px;
-  /* line-height: 30px; */
-}
-.slider-content-left-bottom li {
-  border-top: 4px solid #fff ;
-  width: 20%;
-  text-align: center;
-  cursor: pointer;
-  padding: 6px 0;
-  height: 100%;
-  line-height: 38px;
-  position: relative;
-}
-.slider-content-left-bottom li::before {
-  width: 1px;
-  position: absolute;
-  display: block;
-  content: "";
-  height: 70%;
-  background-color: #ddd;
-  right: 0;
-}
-.slider-content-left-bottom li.active {
-  border-top: 4px solid #f8ba2b ;
-  font-weight: bold;
-}
 
-.slider-content-right {
-  width: 35%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 0 30px;
-  
-}
-.slider-content-right li {
-  width: 50%;
-  height: 50%; 
-  text-align: center;
-  margin-bottom: 3px;
-}
-.slider-content-right li img {
-  border: 1px solid #333;
-  width: 160px;
-  height: 170px; 
-}
-.slider-content-left-top-btn{
-  position: absolute;
-  top: 50%;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-}
-.slider-content-left-top-btn i{
-  color: #333;
-  cursor: pointer;
-  font-size: 35px;
-  height: 50px;
-  width: 30px;
-  background-color: #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(-50%);
-  border-radius: 5px;
-  opacity: 0;
-  transition: .5s;
-}
-/* .slider-content-left-top:hover i {
-  opacity: 1;
-} */
-/*----------------------------------js slider--------------*/
-.slider-content-left-top img {
-position: absolute;
-}
-.slider-content-left-top a:nth-child(2) img {
-transform: translateX(100%);
-}
-
-.slider-content-left-top a:nth-child(3) img {
-  transform: translateX(200%);
-}
-.slider-content-left-top a:nth-child(4) img {
-transform: translateX(300%);
-}
-.slider-content-left-top a:nth-child(5) img {
-transform: translateX(400%);
-}
-.slider-content-left-top-container  {
-position: relative;
-overflow: hidden;
-}
-.slider-content-left-top-container:hover i {
-  opacity: 1;
-}
-.slider-content-left-top {
-  transition: 0.5s;
-}
 </style>
 <header>
 <nav class="notice">
@@ -337,7 +213,7 @@ overflow: hidden;
   <li>
       <a href="">Đà nẵng <i class='bx bxs-down-arrow'></i> </a>
   </li>
-  <li><a href="">Danh mục</a> <i class='bx bx-grid'></i></li>
+  <li><a href="">Tin tức</a> <i class='bx bx-news'></i></li>
   <li>
     <form action="" method="get">
           <div class="search-ajax">

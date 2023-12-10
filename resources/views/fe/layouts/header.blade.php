@@ -61,49 +61,55 @@ font-size: 20px;
 }
 
 .container1 ul li:nth-child(4)  {
-position: relative; 
-}
-.container1 ul li:nth-child(4)  {
-position: relative; 
-}
-.container1 ul li:nth-child(4) input  {
-  width: 250px;
-  height: 35px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-}
-.container1 ul li:nth-child(4) button {
-  cursor: pointer;
-  position: absolute; 
-  font-size: 30px;
-  right: 0;
-  top: 2px;
-  border: none;
-  background-color: #FFFFFF;
-}
-.search-ajax {
-  position: relative;
-}
-.search-ajax .display-ajax {
-  position: absolute;
-  z-index: 2;
-  border: 1px solid #333;
-  background-color: #FFFFFF;
-}
-.search-ajax .display-ajax .around {
-  border:1px solid #333;
-  margin: 3px 10px;
-}
-.search-ajax .display-ajax a {
-  display: flex
-  align-items:center;
-}
-.search-ajax .display-ajax a img {
-  width: 60px;
-  height: 60px;
-  padding: 10px;
-}
+  position: relative; 
+  }
+  .container1 ul li:nth-child(4)  {
+  position: relative; 
+  }
+  .container1 ul li:nth-child(4) input  {
+    width: 250px;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+  }
+  .container1 ul li:nth-child(4) button {
+    cursor: pointer;
+    position: absolute; 
+    font-size: 30px;
+    right: 0;
+    top: 2px;
+    border: none;
+    background-color: #FFFFFF;
+  }
+  .search-ajax {
+    position: relative;
+  }
+
+  .search-ajax .display-ajax {
+    width: 250px;
+    position: absolute;
+    z-index: 2;
+    /* border: 1px solid #333; */
+    background-color: #FFFFFF;
+    top: 38px;
+  }
+  .search-ajax .display-ajax .around {
+    border:1px solid #333;
+    margin: 3px 10px;
+  }
+  .search-ajax .display-ajax .around:hover {
+    background-color:#cbc2c2; 
+  }
+  .search-ajax .display-ajax a {
+    display: flex;
+    align-items:center;
+  }
+  .search-ajax .display-ajax a img {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+  }
 .container1 ul li:nth-child(5):hover {   
   background-color: #f6c960;
   cursor: pointer;
@@ -338,6 +344,18 @@ overflow: hidden;
           <button class='bx bx-search-alt-2'></button>
         </div>
         <div class="display-ajax">
+          <div class="around">
+            <a href="">
+              <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">
+              <span>hoài an</span>
+            </a>
+          </div>
+          <div class="around">
+            <a href="">
+              <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">
+              <span>hoài an</span>
+            </a>
+          </div>
           <div class="around">
             <a href="">
               <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">

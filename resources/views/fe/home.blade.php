@@ -67,9 +67,9 @@
         </div>
     </section>
     <!-- Giải thuật duyệt và render Danh sách sản phẩm theo dòng, cột của Bootstrap -->
-    <div class="danhsachsanpham py-5 bg-light">
+    <div class="danhsachsanpham py-5 ">
         <div class="container">
-            <div class="row">
+            <div class="row bg-light">
                 <h4>Sản phẩm nổi bật</h4>
                 @foreach ($hotproducts as $item)
                 <div class="col-md-4 col-sm-6 col-lg-3">
@@ -111,9 +111,10 @@
                 @endforeach   
                 {{$hotproducts->links()}}       
 
-            </div><hr>
+            </div>
+            <hr style="margin: 20px 0px;">
 
-            <div class="row">
+            <div class="row bg-light">
                 <h4>Tất cả sản phẩm chúng tôi có</h4>
                 @foreach ($allProduct as $item)
                 <div class="col-md-4 col-sm-6 col-lg-3">

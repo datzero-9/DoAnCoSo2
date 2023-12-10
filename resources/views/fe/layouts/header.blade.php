@@ -188,6 +188,7 @@ margin-right: 10px;
   border: 1px solid #333;
   background-color: rgb(192, 205, 219);
   visibility: hidden;
+  z-index: 100;
 }
 .submenu ul  {
 display: flex;

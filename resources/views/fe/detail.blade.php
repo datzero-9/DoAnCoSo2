@@ -20,35 +20,20 @@
     
                             <div class="wrapper row">
                                 <div class="preview col-md-6">
-                                    <div class="preview-pic tab-content">
-                                        <div class="tab-pane" id="pic-1">
-                                            <img src="../assets/img/product/samsung-galaxy-tab-10.jpg">
+                                   
+                                    <div class="container">
+                                        <div class="main">
+                                            <img src="{{asset('storage/images')}}/{{$product->image}}" alt="" class="img_feature">
+                                     
                                         </div>
-                                        <div class="tab-pane" id="pic-2">
-                                            <img src="../assets/img/product/samsung-galaxy-tab.jpg">
-                                        </div>
-                                        <div class="tab-pane active" id="pic-3">
-                                            <img src="{{asset('storage/images')}}/{{$product->image}}">
+                                        <div class="list_image">
+                                            <div class="active"><img src="{{asset('storage/images')}}/{{$product->image}}" alt=""></div>
+                                            <div><img src="/images/anh2.webp" alt=""></div>
+                                            <div><img src="/images/anh3.webp" alt=""></div>
+                                            <div><img src="/images/anh4.webp" alt=""></div>
+                                
                                         </div>
                                     </div>
-                                    <ul class="preview-thumbnail nav nav-tabs">
-                                        <li class="active">
-                                            <a data-target="#pic-1" data-toggle="tab" class="">
-                                                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=c0.22.843.843a_cp6_dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=BEicB11KmK4AX9iBCaN&_nc_oc=AQnROkTH1jmrCu4aF4RRQCbVgQHQg7EA08bjdIqUSXpnYLCZbmIxi6A5ZxGk4a6uarUwY5lu9bVagxCbvYAvANJx&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfAdIt80iB1JJu5M-78IdZDDwL0FI3ZCwr9TvrsPTmdrhA&oe=6578B6E1">
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a data-target="#pic-2" data-toggle="tab" class="">
-                                                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=c0.22.843.843a_cp6_dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=BEicB11KmK4AX9iBCaN&_nc_oc=AQnROkTH1jmrCu4aF4RRQCbVgQHQg7EA08bjdIqUSXpnYLCZbmIxi6A5ZxGk4a6uarUwY5lu9bVagxCbvYAvANJx&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfAdIt80iB1JJu5M-78IdZDDwL0FI3ZCwr9TvrsPTmdrhA&oe=6578B6E1">
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a data-target="#pic-3" data-toggle="tab" class="active">
-                                                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=c0.22.843.843a_cp6_dst-jpg_p843x403&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=BEicB11KmK4AX9iBCaN&_nc_oc=AQnROkTH1jmrCu4aF4RRQCbVgQHQg7EA08bjdIqUSXpnYLCZbmIxi6A5ZxGk4a6uarUwY5lu9bVagxCbvYAvANJx&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfAdIt80iB1JJu5M-78IdZDDwL0FI3ZCwr9TvrsPTmdrhA&oe=6578B6E1">
-
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div class="details col-md-6">
                                     <h3 class="product-title">{{$product->name}}</h3>
@@ -140,271 +125,154 @@
     <!--  -->
 @endsection
 @section('css')
-    <style>
 
-             img {
-                max-width: 100%;
-            }
+<style>
+    .card {
+        background: #eee;
+        padding: 3em;
+        line-height: 1.5em;
+    }
 
-            .preview {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-            }
 
-            @media screen and (max-width: 996px) {
-                .preview {
-                    margin-bottom: 20px;
-                }
-            }
+    .product-title,
+    .price,
+    .sizes,
+    .colors {
+        text-transform: UPPERCASE;
+        font-weight: bold;
+    }
 
-            .preview-pic {
-                -webkit-box-flex: 1;
-                -webkit-flex-grow: 1;
-                -ms-flex-positive: 1;
-                flex-grow: 1;
-                max-height: 300px;
-            }
+    .checked,
+    .price span {
+        color: #ff9f1a;
+    }
 
-            .preview-thumbnail.nav-tabs {
-                border: none;
-                margin-top: 15px;
-            }
+    .product-title,
+    .rating,
+    .product-description,
+    .price,
+    .vote,
+    .sizes {
+        margin-bottom: 15px;
+    }
 
-            .preview-thumbnail.nav-tabs li {
-                width: 18%;
-                margin-right: 2.5%;
-            }
+    .product-title {
+        margin-top: 0;
+    }
 
-            .preview-thumbnail.nav-tabs li img {
-                max-width: 100%;
-                display: block;
-            }
+    .size {
+        margin-right: 10px;
+    }
 
-            .preview-thumbnail.nav-tabs li a {
-                padding: 0;
-                margin: 0;
-            }
+    .size:first-of-type {
+        margin-left: 40px;
+    }
 
-            .preview-thumbnail.nav-tabs li:last-of-type {
-                margin-right: 0;
-            }
+    .color {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        height: 2em;
+        width: 2em;
+        border-radius: 2px;
+    }
 
-            .tab-content {
-                overflow: hidden;
-            }
+    .color:first-of-type {
+        margin-left: 20px;
+    }
 
-            .tab-content img {
-                width: 100%;
-                -webkit-animation-name: opacity;
-                animation-name: opacity;
-                -webkit-animation-duration: .3s;
-                animation-duration: .3s;
-            }
+    .add-to-cart:hover,
+    .like:hover {
+        background: #b36800;
+        color: #fff;
+    }
 
-            .card {
-                background: #eee;
-                padding: 3em;
-                line-height: 1.5em;
-            }
+    .not-available {
+        text-align: center;
+        line-height: 2em;
+    }
 
-            @media screen and (min-width: 997px) {
-                .wrapper {
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                }
-            }
+    .not-available:before {
+        font-family: fontawesome;
+        content: "\f00d";
+        color: #fff;
+    }
 
-            .details {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-            }
+    .tooltip-inner {
+        padding: 1.3em;
+    }
 
-            .colors {
-                -webkit-box-flex: 1;
-                -webkit-flex-grow: 1;
-                -ms-flex-positive: 1;
-                flex-grow: 1;
-            }
+    .main {
+        height: 80%;
+        margin-bottom: 20px;
+        position: relative;
+    }
 
-            .product-title,
-            .price,
-            .sizes,
-            .colors {
-                text-transform: UPPERCASE;
-                font-weight: bold;
-            }
+    .list_image {
+        height: 15%;
+        display: flex;
+        justify-content: space-between;
+    }
 
-            .checked,
-            .price span {
-                color: #ff9f1a;
-            }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
-            .product-title,
-            .rating,
-            .product-description,
-            .price,
-            .vote,
-            .sizes {
-                margin-bottom: 15px;
-            }
+    .list_image div {
+        flex: 1;
+        padding: 5px;
+    }
 
-            .product-title {
-                margin-top: 0;
-            }
+    .control {
+        position: absolute;
+        top: 50%;
+        font-size: 50px;
+        color: aliceblue;
+        cursor: pointer;
+        transform: translateY(-50%);
+    }
 
-            .size {
-                margin-right: 10px;
-            }
+    .pre {
+        left: 10px;
+    }
 
-            .size:first-of-type {
-                margin-left: 40px;
-            }
+    .next {
+        right: 10px;
+    }
 
-            .color {
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 10px;
-                height: 2em;
-                width: 2em;
-                border-radius: 2px;
-            }
-
-            .color:first-of-type {
-                margin-left: 20px;
-            }
-
-            .add-to-cart,
-            .like {
-                background: #ff9f1a;
-                padding: 1.2em 1.5em;
-                border: none;
-                text-transform: UPPERCASE;
-                font-weight: bold;
-                color: #fff;
-                -webkit-transition: background .3s ease;
-                transition: background .3s ease;
-            }
-
-            .add-to-cart:hover,
-            .like:hover {
-                background: #b36800;
-                color: #fff;
-            }
-
-            .not-available {
-                text-align: center;
-                line-height: 2em;
-            }
-
-            .not-available:before {
-                font-family: fontawesome;
-                content: "\f00d";
-                color: #fff;
-            }
-
-            .orange {
-                background: #ff9f1a;
-            }
-
-            .green {
-                background: #85ad00;
-            }
-
-            .blue {
-                background: #0076ad;
-            }
-
-            .tooltip-inner {
-                padding: 1.3em;
-            }
-
-            @-webkit-keyframes opacity {
-                0% {
-                    opacity: 0;
-                    -webkit-transform: scale(3);
-                    transform: scale(3);
-                }
-
-                100% {
-                    opacity: 1;
-                    -webkit-transform: scale(1);
-                    transform: scale(1);
-                }
-            }
-
-            @keyframes opacity {
-                0% {
-                    opacity: 0;
-                    -webkit-transform: scale(3);
-                    transform: scale(3);
-                }
-
-                100% {
-                    opacity: 1;
-                    -webkit-transform: scale(1);
-                    transform: scale(1);
-                }
-            }
-    </style>
+    .active {
+        background-color: black;
+    }
+</style>
 @endsection
 @section('js')
-<script src="">
+<script>
+    var imgFeature = document.querySelector('.img_feature')
+    var listImg = document.querySelectorAll('.list_image img')
+    var preBtn = document.querySelector('.pre')
+    var nextBtn = document.querySelector('.next')
 
-    smallImgs[0].addEventListener('click', () => {
-        featuedImg.src = smallImgs[0].src;
-        smallImgs[0].classList.add('sm-card')
-        smallImgs[1].classList.remove('sm-card')
-        smallImgs[2].classList.remove('sm-card')
-        smallImgs[3].classList.remove('sm-card')
-        smallImgs[4].classList.remove('sm-card')
-    })
-    smallImgs[1].addEventListener('click', () => {
-        featuedImg.src = smallImgs[1].src;
-        smallImgs[0].classList.remove('sm-card')
-        smallImgs[1].classList.add('sm-card')
-        smallImgs[2].classList.remove('sm-card')
-        smallImgs[3].classList.remove('sm-card')
-        smallImgs[4].classList.remove('sm-card')
-    })
-    smallImgs[2].addEventListener('click', () => {
-        featuedImg.src = smallImgs[2].src;
-        smallImgs[0].classList.remove('sm-card')
-        smallImgs[1].classList.remove('sm-card')
-        smallImgs[2].classList.add('sm-card')
-        smallImgs[3].classList.remove('sm-card')
-        smallImgs[4].classList.remove('sm-card')
-    })
-    smallImgs[3].addEventListener('click', () => {
-        featuedImg.src = smallImgs[3].src;
-        smallImgs[0].classList.remove('sm-card')
-        smallImgs[1].classList.remove('sm-card')
-        smallImgs[2].classList.remove('sm-card')
-        smallImgs[3].classList.add('sm-card')
-        smallImgs[4].classList.remove('sm-card')
-    })
-    smallImgs[4].addEventListener('click', () => {
-        featuedImg.src = smallImgs[4].src;
-        smallImgs[0].classList.remove('sm-card')
-        smallImgs[1].classList.remove('sm-card')
-        smallImgs[2].classList.remove('sm-card')
-        smallImgs[3].classList.remove('sm-card')
-        smallImgs[4].classList.add('sm-card')
+    var currentIndex = 0
+    function updateIamgeByIndex(index) {
+        //remove active 
+
+        document.querySelectorAll('.list_image div').forEach(item => {
+            item.classList.remove('active')
+        })
+        currentIndex = index;
+        imgFeature.src = listImg[index].getAttribute('src')
+        listImg[index].parentElement.classList.add('active')
+    }
+
+    listImg.forEach((imgElement, index) => {
+
+        imgElement.addEventListener('click', e => {
+            updateIamgeByIndex(index)
+
+        })
     })
 </script>
 <script>

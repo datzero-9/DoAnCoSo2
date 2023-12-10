@@ -21,12 +21,8 @@ class ProductController extends Controller
     {
        
        $products = Products::orderBy('created_at','desc')
-       ->paginate(3);
-       if($key = request()->key){
-        $products = Products::orderBy('created_at','desc')
-        ->where('name','like','%'.$key.'%')
-        ->paginate(3);
-       }
+       ->Search()
+       ->paginate(3); 
         return view('admin.product.index', compact('products'));
     }
 

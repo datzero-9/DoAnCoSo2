@@ -72,6 +72,7 @@ font-size: 20px;
     outline: none;
     border: none;
     border-radius: 5px;
+    padding: 10px;
   }
   .container1 ul li:nth-child(4) button {
     cursor: pointer;
@@ -338,32 +339,14 @@ overflow: hidden;
   <li><a href="">Danh mục</a> <i class='bx bx-grid'></i></li>
   <li>
     <form action="" method="get">
-      <div class="search-ajax">
-        <div class="">
-          <input type="text" placeholder="tìm kiếm sản phẩm" name="key">
-          <button class='bx bx-search-alt-2'></button>
-        </div>
-        <div class="display-ajax">
-          <div class="around">
-            <a href="">
-              <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">
-              <span>hoài an</span>
-            </a>
+          <div class="search-ajax">
+            <div class="">
+              <input type="text" placeholder="tìm kiếm sản phẩm" name="key" class="input-search-ajax">
+              <button class='bx bx-search-alt-2'></button>
+            </div>
+              <div class="display-ajax">
+                
           </div>
-          <div class="around">
-            <a href="">
-              <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">
-              <span>hoài an</span>
-            </a>
-          </div>
-          <div class="around">
-            <a href="">
-              <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">
-              <span>hoài an</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
     </form>
   </li>
@@ -421,3 +404,36 @@ overflow: hidden;
 </ul>
 </nav>
 </header>
+@section('headerjs')
+<script>
+  $('.display-ajax').hide();
+  $('.input-search-ajax').keyup(function(){
+  var _text =$(this).val();
+    if(_text!=''){
+      $.ajax({
+          //api llấy dữ liệu từ backend về
+          url: 'http://127.0.0.1:8000/api/search-product?key=' + _text,
+          type: 'GET',
+          success: function (req) {
+              var _html = '';
+              for (var product of req) {
+                  _html += '<div class="around">';
+                  _html += '<a href="http://127.0.0.1:8000/detail/' + product.slug + '">';
+                  _html += `<img src="{{asset('storage/images')}}/${product.image}">`;
+                  _html += `<span>${product.name}</span> <br>`;
+                  _html += '</a>';
+                  _html += '</div>';
+              }
+              $('.display-ajax').show(100);
+              $('.display-ajax').html(_html);
+          }
+      });
+    }else {
+          $('.display-ajax').html('');
+          $('.display-ajax').hide();
+
+  }
+
+})
+</script>
+@endsection

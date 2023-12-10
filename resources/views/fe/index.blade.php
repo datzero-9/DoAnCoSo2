@@ -22,6 +22,7 @@
     <!-- đây là phần footer  -->
 @include('fe.layouts.footer')
     @yield('js')
+    @yield('headerjs')
 </body>
 
 </html>

@@ -36,6 +36,8 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'postRegister']);
 Route::get('/logoutAcc', [UserController::class, 'logoutAcc'])->name('logoutAcc');
 
+Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
+
 Route::prefix('/cart')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::get('/deletecart{id}', [CartController::class, 'deleteCart'])->name('deletecart.index');

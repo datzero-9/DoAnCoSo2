@@ -91,4 +91,7 @@ class UserController extends Controller
         }
         return redirect()->route('login')->with('msg', 'Đăng kí tài khoản thành công');
     }
+    public function contact(){
+        return view('fe.contact');
+    }
 }

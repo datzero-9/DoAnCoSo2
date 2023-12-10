@@ -366,7 +366,7 @@ overflow: hidden;
   </a>
 </li>
   <li>
-          <a href="">Cửa hàng</a><i class='bx bxs-location-plus'></i></option>   
+          <a href="{{route('contact.index')}}">Cửa hàng</a><i class='bx bxs-location-plus'></i></option>   
   </li>
   <li>
       @if (Auth::check())

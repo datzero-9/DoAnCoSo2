@@ -21,7 +21,5 @@ class Products extends Model
  {
      return $this->belongsTo(Category::class);
  }
- public function getAll(){
-    return Products::orderBy('created_at','desc')->paginate(4);
- }
+
 }

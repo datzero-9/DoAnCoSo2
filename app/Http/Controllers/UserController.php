@@ -51,7 +51,9 @@ class UserController extends Controller
     public function logoutAcc()
     {
         Auth::logout();
+        session(['cart' =>  null]);
         return redirect()->route('login');
+        
     }
 
     public function register()

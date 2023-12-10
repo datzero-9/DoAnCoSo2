@@ -39,7 +39,6 @@ Route::prefix('/')->middleware('user')->group(function () {
     Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::get('/deletecart{id}', [CartController::class, 'deleteCart'])->name('deletecart.index');
-    // Route::get('/update{id}', [CartController::class, 'updateCart'])->name('updatecart.index');
     Route::post('/addCart', [CartController::class, 'addCart'])->name('cart.add');
     Route::get('/clearcart', [CartController::class, 'clearCart'])->name('clear.cart');
 });

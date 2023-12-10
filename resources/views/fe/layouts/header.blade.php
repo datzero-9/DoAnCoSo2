@@ -63,18 +63,46 @@ font-size: 20px;
 .container1 ul li:nth-child(4)  {
 position: relative; 
 }
+.container1 ul li:nth-child(4)  {
+position: relative; 
+}
 .container1 ul li:nth-child(4) input  {
   width: 250px;
   height: 35px;
   outline: none;
   border: none;
+  border-radius: 5px;
 }
-.container1 ul li:nth-child(4) i {
+.container1 ul li:nth-child(4) button {
   cursor: pointer;
   position: absolute; 
-  font-size: 20px;
+  font-size: 30px;
   right: 0;
-  top: 5px;
+  top: 2px;
+  border: none;
+  background-color: #FFFFFF;
+}
+.search-ajax {
+  position: relative;
+}
+.search-ajax .display-ajax {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid #333;
+  background-color: #FFFFFF;
+}
+.search-ajax .display-ajax .around {
+  border:1px solid #333;
+  margin: 3px 10px;
+}
+.search-ajax .display-ajax a {
+  display: flex
+  align-items:center;
+}
+.search-ajax .display-ajax a img {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
 }
 .container1 ul li:nth-child(5):hover {   
   background-color: #f6c960;
@@ -302,7 +330,25 @@ overflow: hidden;
       <a href="">Đà nẵng <i class='bx bxs-down-arrow'></i> </a>
   </li>
   <li><a href="">Danh mục</a> <i class='bx bx-grid'></i></li>
-  <li><input type="text" placeholder="tìm kiếm sản phẩm"><i class='bx bx-search-alt-2'></i></li>
+  <li>
+    <form action="" method="get">
+      <div class="search-ajax">
+        <div class="">
+          <input type="text" placeholder="tìm kiếm sản phẩm" name="key">
+          <button class='bx bx-search-alt-2'></button>
+        </div>
+        <div class="display-ajax">
+          <div class="around">
+            <a href="">
+              <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/409131802_1559195081504832_5605846028303741474_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Q8Odwh-vfbsAX-8PqNC&_nc_oc=AQkUbQ4od0XSEbNpChGuYyTtBrCFebKnLKRU8Yb8Y_L-Oa2b2sPdmyxuKW5vkkZTL-Zr-WCPU7l9mlB03rVAiByR&_nc_ht=scontent.fdad1-4.fna&cb_e2o_trans=t&oh=00_AfC93XdBFirmJJxQeuHopgg7L6s9PWz0nwrzNIQgDAqjLw&oe=657AB121" alt="">
+              <span>hoài an</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </li>
   <li class="d-flex align-items-center">
       <i class='bx bx-phone-call'></i>
       <a href="">Gọi mua hàng <br>0356031160</a>

@@ -14,7 +14,9 @@ Dánh sách tài khoản
         @endif
         <hr>
         <hr>
+        
         <table class="table table-bordered">
+          
           <thead>
               <tr>
                   <th width="5%">STT</th>
@@ -25,11 +27,12 @@ Dánh sách tài khoản
                   <th width="5%">Delete</th>
               </tr>
           </thead>
+          @forelse ($user as $item)
           <tbody>
-            @forelse ($user as $item)
+            
             <tr>
               
-              <td>{{$loop->iteration}}</td>
+              <td>{{$item->index+1}}</td>
               <td>{{$item->name}}</td>
               <td>{{$item->email}}</td>            
               <td>{{$item->created_at}}</td>            
@@ -41,16 +44,12 @@ Dánh sách tài khoản
               <button type="submit"  onclick="return confirm('Do you want delete User ?')" class="btn btn-danger">xóa</button>      
               </form></td>  
           </tr>
-            @empty
-                <span>don't exist data</span>
+        </tbody>
+        @empty
+                <strong class="">Người dùng không tồn tại</strong>
             @endforelse
-              
-            
-          
-           
-          </tbody>
-          </table>
-      
+      </table>  
+          {{$user->appends(request()->all())->links()}}
     </div>
 @endsection
 

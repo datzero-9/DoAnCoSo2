@@ -4,20 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Users;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class AccountUser extends Controller
 {
 public function index(){  
-    $user = User::all();
-    // dd($user);
+    $user = User::where('role',0)->paginate(10);;
+    if($key = request()->key){
+        $user = User::orderBy('created_at','desc')
+        ->where('name','like','%'.$key.'%')
+        ->paginate(10);
+    }
     return view('admin.account.accountUser', compact('user'));
 }
 public function destroy($id){
 
-       
     try {
         $user = User::where('id', $id)->first();
         $user->delete();

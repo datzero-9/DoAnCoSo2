@@ -44,7 +44,7 @@ Danh sách sản phẩm
               <td>{{$item->sale_price}}</td>
               <td>{{$item->category->name ?? 'none'}}</td>
               <td>
-                <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="200px">
+                <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="200px" style="height: 100px;">
               </td>
               <td>{{$item->created_at}}</td>
               
@@ -59,7 +59,7 @@ Danh sách sản phẩm
               </form></td>  
           </tr>
             @empty
-                <span>don't exist data</span>
+            <strong class="">Không tìm thấy sản phẩm</strong>
             @endforelse
               
             

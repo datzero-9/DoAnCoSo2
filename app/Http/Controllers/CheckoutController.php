@@ -41,7 +41,7 @@ class CheckoutController extends Controller
                 ]);
             }
             session(['cart' =>  null]);
-            return  redirect()->route('checkout')->with('msg', 'Đặt hàng thành công');
+            return  redirect()->route('checkout')->with('msg', 'Đặt hàng thành công, kiểm tra email để biết thông tin');
         } else {
             return  redirect()->back()->with('msg', 'Đặt hàng khỏng thành công');
         }

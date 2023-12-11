@@ -129,8 +129,8 @@
 <style>
     .card {
         background: #eee;
-        padding: 3em;
-        line-height: 1.5em;
+        /* padding: 3em; */
+        /* line-height: 1.5em; */
     }
 
 

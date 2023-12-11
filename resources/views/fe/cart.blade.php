@@ -1,19 +1,21 @@
 @extends('fe.index')
 @section('main')
+<div class="container fs-5">
+    <a href="{{route('home')}}"><strong class="text-dark">Trang chủ /</strong></a>
+    <a href="" class=""> Giỏ hàng 
+
+</div>
+
     <div class="container"> 
-        
+        <hr style="margin: 0;top: 0; height: 2px; color: #5a5a5a;">
     <main role="main">
         <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
         <div class="container mt-4">
-            <div id="thongbao" class="alert alert-danger d-none face" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-                    @if (session('msg'))
-                        <div class="alert alert-warning text-center">{{session('msg')}}</div>
-                    @endif
-            <h2 class="text-start">Giỏ hàng</h2>
+
+            @if (session('msg'))
+             <div class="alert alert-warning text-center">{{session('msg')}}</div>                   
+            @endif
+
             <div class="row">
                 <div class="col col-md-12">
                     <table class="table table-bordered">
@@ -78,7 +80,7 @@
 
                            <a href="{{route('clear.cart')}}" onclick="confirm('bạn có muốn xóa sạch giỏ hàng ')" class="btn btn-danger mx-5 "><i class="fa fa-shopping-cart"
                             aria-hidden="true"></i>&nbsp;Xóa hết giỏ hàng </a>
-                            <a href="" class="btn btn-warning "><i class="fa fa-shopping-cart"
+                            <a href="{{route('checkout')}}" class="btn btn-warning "><i class="fa fa-shopping-cart"
                                 aria-hidden="true"></i>&nbsp;Thanh toán</a>
                         @else
                         <a href="{{route('home')}}" class="btn btn-primary "><i class="fa fa-shopping-cart"
@@ -93,9 +95,7 @@
         </div>
         <!-- End block content -->
     </main>
-    
-        
-    
+
         <!-- Optional JavaScript -->
          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

@@ -87,8 +87,7 @@ Thêm sản phẩm
                     <div class="form-group">
                         <label for="description">Mô tả sản phẩm:</label>
                         <textarea name="description" id="description" rows="10" cols="220">            
-                        </textarea>  
-                                 
+                        </textarea>             
                     </div>       
                     <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
                     <a href="{{route('admin.index')}}" class="btn btn-info">Quay lại</a>

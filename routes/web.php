@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AccountUser;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
@@ -37,10 +38,16 @@ Route::prefix('/')->middleware('user')->group(function () {
     Route::get('/homepage', [HomeController::class, 'index'])->name('home');
     Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
+
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::get('/deletecart{id}', [CartController::class, 'deleteCart'])->name('deletecart.index');
     Route::post('/addCart', [CartController::class, 'addCart'])->name('cart.add');
     Route::get('/clearcart', [CartController::class, 'clearCart'])->name('clear.cart');
+
+    Route::get('/checkout', [CheckoutController::class, 'form'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'submit_Form']);
+
+  
 });
 
 Route::prefix('/admin')->middleware('admin')->group(function () {

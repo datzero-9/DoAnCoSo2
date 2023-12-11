@@ -28,9 +28,15 @@
                                         </div>
                                         <div class="list_image">
                                             <div class="active"><img src="{{asset('storage/images')}}/{{$product->image}}" alt=""></div>
-                                            <div><img src="/images/anh2.webp" alt=""></div>
-                                            <div><img src="/images/anh3.webp" alt=""></div>
-                                            <div><img src="/images/anh4.webp" alt=""></div>
+                                         
+                                          {{-- @php
+                                             dd( $product->images['image']) ;
+                                          @endphp --}}
+                                            @foreach ($product->images as $item)
+                                               <div><img src="{{asset('storage/images')}}/{{$item->image}}" alt=""></div>
+                                            @endforeach
+                                           
+                                            
                                 
                                         </div>
                                     </div>

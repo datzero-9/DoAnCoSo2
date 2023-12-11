@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AccountUser;
+use App\Http\Controllers\Admin\StatisticalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -52,7 +53,9 @@ Route::prefix('/')->middleware('user')->group(function () {
 
 Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/', [DashBoardController::class, 'index'])->name('admin.index');
+    Route::get('/statistical', [StatisticalController::class, 'index'])->name('statistical.index');
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('accountuser', AccountUser::class);
+    
 });

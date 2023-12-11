@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Models\ImgProducts;
 
 class Products extends Model
 {
@@ -15,7 +16,7 @@ class Products extends Model
   *
   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
   */
-  //quan hệ 1 1 nhưng ngược nên sử dụng belongTo để đổi lại vị trí
+  //quan hệ 1 nhiều nhưng ngược nên sử dụng belongTo để đổi lại vị trí
   
  public function category()
  {
@@ -28,5 +29,8 @@ class Products extends Model
        }
        return $query;
  }
-
+ public function images()
+{
+    return $this->hasMany(ImgProducts::class,'product_id','id');
+}
 }

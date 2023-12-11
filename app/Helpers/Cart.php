@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class Cart
 {
-    private $items = [];
+    public $items = [];
     public $totalquantity = 0;
     public  $totalprice = 0;
 

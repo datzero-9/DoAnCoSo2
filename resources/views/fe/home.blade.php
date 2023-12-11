@@ -138,9 +138,9 @@ overflow: hidden;
     </style>
 @endsection
 @section('main')
-<main>
-    {{-- <a href="#"><img class="avatar" src="https://cdn.tgdd.vn/2023/11/banner/Laptop-HP-720-220-720x220-1.png"
-            alt=""></a> --}}
+<main class="container">
+    <a href="#"><img class="avatar" src="https://cdn.tgdd.vn/2023/11/banner/Laptop-HP-720-220-720x220-1.png"
+            alt=""></a>
     <section class="slider">
         <div class="container container3">
 

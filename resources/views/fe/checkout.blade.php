@@ -3,7 +3,7 @@
 <div class="container fs-5"><a href="{{route('home')}}"><strong class="text-dark">Trang chủ /</strong></a><a href="" class="text-dark"> Giỏ hàng /</a> <a href=""> Thanh toán</a></div>
 <div class="container">
     @if (session('msg'))
-    <div class="alert alert-danger">{{session('msg')}}</div>   
+    <div class="alert alert-success">{{session('msg')}}</div>   
     @endif
 <hr style="margin: 0; top: 0;">
     <form action="" method="POST" role="form" enctype="multipart/form-data">
@@ -31,14 +31,14 @@
 
             <div class="form-group mt-3">
                 <label for="">Điện thoại:</label>
-                <input type="text" class="form-control" name="phone" value="{{old('slug')}}">
+                <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
                 @error('phone')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
             <div class="form-group my-3">
                 <label for="">Địa chỉ:</label>
-                <input type="text" class="form-control" name="address" value="{{old('slug')}}">
+                <input type="text" class="form-control" name="address" value="{{old('address')}}">
                 @error('address')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                {{-- <a href="{{route('admin.index')}}" class="btn btn-info mx-4">Quay lại</a> --}}
+                <a href="{{route('cart.index')}}" class="btn btn-primary mx-4">Quay lại</a>
                 <button type="submit" class="btn btn-warning ">Xác nhận</button>
             </div>
         </div>                     

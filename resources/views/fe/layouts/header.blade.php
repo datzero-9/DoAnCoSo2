@@ -297,7 +297,7 @@ flex-direction: column;
                   _html += '<div class="around">';
                   _html += '<a href="http://127.0.0.1:8000/detail/' + product.slug + '">';
                   _html += `<img src="{{asset('storage/images')}}/${product.image}">`;
-                  _html += `<span>${product.name}</span> <br>`;
+                  _html += `<span>${product.name.length > 20 ? product.name.slice(0, 30) + '...' : product.name}</span> <br>`;
                   _html += '</a>';
                   _html += '</div>';
               }

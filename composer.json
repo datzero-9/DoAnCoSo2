@@ -13,6 +13,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "nesbot/carbon": "^2.72",
+        "spatie/laravel-analytics": "^5.1",
         "unisharp/laravel-filemanager": "^2.6"
     },
     "require-dev": {

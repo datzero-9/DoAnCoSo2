@@ -35,12 +35,12 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'postRegister']);
 Route::get('/logoutAcc', [UserController::class, 'logoutAcc'])->name('logoutAcc');
 
-Route::prefix('/')->middleware('user')->group(function () {
-    Route::get('/homepage', [HomeController::class, 'index'])->name('home');
+Route::prefix('/user')->middleware('user')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
 
-    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::get('/deletecart{id}', [CartController::class, 'deleteCart'])->name('deletecart.index');
     Route::post('/addCart', [CartController::class, 'addCart'])->name('cart.add');
     Route::get('/clearcart', [CartController::class, 'clearCart'])->name('clear.cart');

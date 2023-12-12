@@ -4,44 +4,33 @@
         <main role="main">
             <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
             <div class="container mt-4">
-                <div id="thongbao" class="alert alert-danger d-none face" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+                <div id="thongbao" class="alert alert-danger d-none face" role="alert">                   
                 </div>
     
                 <div class="card">
-                    <div class="container-fliud">
+                    <div class="container-fliud m-3">
                         
-                            <input type="hidden" name="sp_ma" id="sp_ma" value="5">
-                            <input type="hidden" name="sp_ten" id="sp_ten" value="Samsung Galaxy Tab 10.1 3G 16G">
-                            <input type="hidden" name="sp_gia" id="sp_gia" value="10990000.00">
-                            <input type="hidden" name="hinhdaidien" id="hinhdaidien" value="samsung-galaxy-tab-10.jpg">
+
     
-                            <div class="wrapper row">
-                                <div class="preview col-md-6">
+                            <div class="wrapper row ">
+                                <div class="preview col-md-5 mb-3">
                                    
                                     <div class="container">
-                                        <div class="main">
+                                        <div class="main ">
                                             <img src="{{asset('storage/images')}}/{{$product->image}}" alt="" class="img_feature">
-                                     
                                         </div>
                                         <div class="list_image">
-                                            <div class="active"><img src="{{asset('storage/images')}}/{{$product->image}}" alt=""></div>
+                                            <div class="active"><img src="{{asset('storage/images')}}/{{$product->image}}"></div>
                                          
-                                          {{-- @php
-                                             dd( $product->images['image']) ;
-                                          @endphp --}}
                                             @foreach ($product->images as $item)
                                                <div><img src="{{asset('storage/images')}}/{{$item->image}}" alt=""></div>
                                             @endforeach
-                                           
-                                            
-                                
+                         
                                         </div>
                                     </div>
                                 </div>
-                                <div class="details col-md-6">
+                                <div class="details col-md-7 mb-3">
+                                   <div class="container">
                                     <h3 class="product-title">{{$product->name}}</h3>
                                     <div class="rating">
                                         <div class="stars">
@@ -54,22 +43,27 @@
                                         <span class="review-no">999 reviews</span>
                                     </div>
                                     
-                                    <small class="text-muted">Giá cũ: <s><span>{{number_format($product->sale_price) > 0 ? number_format($product->price) : 'Chưa giảm giá lần nào'}} vnđ</span></s></small>
-                                    <h4 class="price">Giá hiện tại: <span>{{number_format($product->sale_price) > 0 ? number_format($product->sale_price) : number_format($product->price) }} vnđ</span></h4>
+                                    <small class="">Giá cũ: <s><span>{{number_format($product->sale_price) > 0 ? number_format($product->price) : 'Chưa giảm giá lần nào'}} vnđ</span></s></small><br>
+                                    <small class=" text-danger">Giảm: {{percent($product->sale_price, $product->price)}}%</small>
+                                    <h4 class="price">Giá hiện tại: <span class="text-danger">{{number_format($product->sale_price) > 0 ? number_format($product->sale_price) : number_format($product->price) }} vnđ</span></h4>
                                     <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
                                         <strong>Uy
                                             tín</strong>!
                                     </p>
                                   
-                                    <h5 class="colors">Màu:
-                                        <span class="color orange not-available" data-toggle="tooltip"
-                                            title="Hết hàng"></span>
-                                        <span class="color green"></span>
-                                        <span class="color blue"></span>
-                                    </h5>
-
-
-
+                                    
+                                        <div class="radio d-flex align-items-center">
+                                            <h5 class="colors">Màu:</h5>
+                                            <label for="" class="mx-3" >
+                                                <input type="radio" name="status" checked="checked" value="0" >
+                                               Trắng  
+                                            </label> 
+                                            <label for="" >
+                                                <input type="radio" name="status" checked="checked" value="1">
+                                                đen 
+                                            </label>
+                                        </div>
+  
                                     <form action="{{route('cart.add')}}" method="post">
                                         @csrf
                                         <div class="form-group">
@@ -93,12 +87,11 @@
                                             <button type="submit" class=" btn btn-warning" >Thêm vào giỏ hàng</button>
                                         </div>
                                     </form>
+                                   </div>
 
 
                                 </div>
-    
-                            </div>
-                        
+                            </div>                    
                     </div>
                 </div>
     
@@ -133,80 +126,7 @@
 @section('css')
 
 <style>
-    .card {
-        background: #eee;
-        /* padding: 3em; */
-        /* line-height: 1.5em; */
-    }
-
-
-    .product-title,
-    .price,
-    .sizes,
-    .colors {
-        text-transform: UPPERCASE;
-        font-weight: bold;
-    }
-
-    .checked,
-    .price span {
-        color: #ff9f1a;
-    }
-
-    .product-title,
-    .rating,
-    .product-description,
-    .price,
-    .vote,
-    .sizes {
-        margin-bottom: 15px;
-    }
-
-    .product-title {
-        margin-top: 0;
-    }
-
-    .size {
-        margin-right: 10px;
-    }
-
-    .size:first-of-type {
-        margin-left: 40px;
-    }
-
-    .color {
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 10px;
-        height: 2em;
-        width: 2em;
-        border-radius: 2px;
-    }
-
-    .color:first-of-type {
-        margin-left: 20px;
-    }
-
-    .add-to-cart:hover,
-    .like:hover {
-        background: #b36800;
-        color: #fff;
-    }
-
-    .not-available {
-        text-align: center;
-        line-height: 2em;
-    }
-
-    .not-available:before {
-        font-family: fontawesome;
-        content: "\f00d";
-        color: #fff;
-    }
-
-    .tooltip-inner {
-        padding: 1.3em;
-    }
+    
 
     .main {
         height: 80%;
@@ -214,10 +134,12 @@
         position: relative;
     }
 
-    .list_image {
-        height: 15%;
+    .list_image {       
+         height: 15%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: row;
+        /* justify-content: space-between; */
+        flex-wrap: wrap;
     }
 
     img {
@@ -229,28 +151,18 @@
 
     .list_image div {
         flex: 1;
-        padding: 5px;
+        padding: 2px;
     }
 
-    .control {
-        position: absolute;
-        top: 50%;
-        font-size: 50px;
-        color: aliceblue;
-        cursor: pointer;
-        transform: translateY(-50%);
-    }
-
-    .pre {
-        left: 10px;
-    }
-
-    .next {
-        right: 10px;
-    }
-
+ 
     .active {
         background-color: black;
+    }
+    .img_feature {
+        width: 100%;
+    }
+    .product-title{
+        font-size : 18px;
     }
 </style>
 @endsection
@@ -258,8 +170,6 @@
 <script>
     var imgFeature = document.querySelector('.img_feature')
     var listImg = document.querySelectorAll('.list_image img')
-    var preBtn = document.querySelector('.pre')
-    var nextBtn = document.querySelector('.next')
 
     var currentIndex = 0
     function updateIamgeByIndex(index) {

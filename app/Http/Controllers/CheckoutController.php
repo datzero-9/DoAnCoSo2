@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class CheckoutController extends Controller
@@ -20,12 +21,14 @@ class CheckoutController extends Controller
     {
         $id_user =  Auth::user()->id;
         //   dd($cart->totalprice);
+        $orderDate =  Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         $order = Order::create([
             'customer_id' => $id_user,
             'total_amount' => $cart->totalprice,
             'phone' => $req->phone,
             'address' => $req->address,
-            'note' => $req->note
+            'note' => $req->note,
+            'order_date' => $orderDate
         ]);
 
         if ($order) {

@@ -12,7 +12,7 @@
         }
         .slider {
   margin-top: 20px;
-  height: 350px;
+  height: auto;
 }
 .slider-content {
   display: flex;
@@ -64,24 +64,23 @@
 }
 
 .slider-content-right {
+ height: 100%;
   width: 35%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 0 30px;
+  padding: 0 0 0 30px;
   
 }
-.slider-content-right li {
-  width: 50%;
-  height: 50%; 
+.slider-content-right div {
+  width: 100%;
+  height: 140px;
   text-align: center;
   margin-bottom: 3px;
 }
-.slider-content-right li img {
-  border: 1px solid #333;
-  width: 160px;
-  height: 170px; 
+.slider-content-right div img {
+  width: 80%;
+  height: 100%; 
+  
 }
+
 .slider-content-left-top-btn{
   position: absolute;
   top: 50%;
@@ -135,6 +134,11 @@ overflow: hidden;
 .slider-content-left-top {
   transition: 0.5s;
 }
+
+.sanphamnoibat:hover .card-body + .imgproduct{
+    border: 1px solid #333;
+    transition: 0.5s;
+}
     </style>
 @endsection
 @section('main')
@@ -142,7 +146,7 @@ overflow: hidden;
     <a href="#"><img class="avatar" src="https://cdn.tgdd.vn/2023/11/banner/Laptop-HP-720-220-720x220-1.png"
             alt=""></a>
     <section class="slider">
-        <div class="container container3">
+        <div class="container">
 
             <div class="slider-content">
 
@@ -172,10 +176,11 @@ overflow: hidden;
                 </div>
 
                 <div class="slider-content-right">
-                    <li><img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/44/296847/dell-inspiron-15-3520-i5-n5i5122w1-191222-091429-600x600.jpg" alt=""></li>
-                    <li><img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/44/314840/dell-inspiron-14-7430-i5-n7430i58w1-221023-102403-600x600.png" alt=""></li>
-                    <li><img src="{{asset('storage/images/anh4.webp')}}" alt=""></li>
-                    <li><img src="{{asset('storage/images/anh2.jpg')}}" alt=""></li>
+                    @foreach ($newProduct as $item)
+                    <p style="margin: 0;top: 0;" class="text-center"><strong>{{Str::limit($item->name, 20, '...')}}</strong></p>
+                    <div><a href="{{route('detail',$item->slug)}}"> <img src="{{asset('storage/images')}}/{{$item->image}}" alt=""> </a>
+                    </div><hr style="margin:10px 0;padding:0;">
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -192,14 +197,15 @@ overflow: hidden;
         </div>
     </section>
     <!-- Giải thuật duyệt và render Danh sách sản phẩm theo dòng, cột của Bootstrap -->
-    <div class="danhsachsanpham py-5 ">
+    <div class="danhsachsanpham ">
         <div class="container">
             <div class="row bg-light">
-                <h4>Sản phẩm nổi bật</h4>
+                <h4 class="mt-4">Sản phẩm nổi bật</h4>
                 @foreach ($hotproducts as $item)
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <div class="card mb-4 shadow-sm">
-                        <a href="#" class="position-relative">
+                <div class="col-md-4 col-sm-6 col-lg-3 sanphamnoibat">
+                   <a href="">
+                     <div class="card mb-4 shadow-sm">
+                        <a href="{{route('detail',$item->slug)}}" class="position-relative">
                             <img class="card-img-top img-fluid imgproduct 
                             " src="{{asset('storage/images')}}/{{$item->image}}">
                             <button type="submit" class="border border-0 position-absolute start-0 bg-success rounded-end-circle" style="width:60px;top:5px;borber:none;"><b>Hot</b></button>
@@ -211,19 +217,20 @@ overflow: hidden;
                         </a>
                         <div class="card-body">
                             <a href="#" class="nameproduct">
-                                <h6 class="">{{$item->name}}</h6>
+                                <h6><strong>{{Str::limit($item->name, 25, '...')}}</strong></h6>
                             </a>
-                            <h6>Thương hiệu: {{$item->category->name}}</h6>                            
+                            <h6><strong>Sản phẩm</strong>: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted text-right">
-                                    <h6>Giá: </h6>
+                                    <h6><strong>Giá</strong>: </h6>
                                     @if ($item->sale_price > 0)
-                                    <s>đ{{number_format($item->price)}} </s> -
-                                    <b>đ{{number_format($item->sale_price)}}</b> 
+                                    <s>đ{{number_format($item->price)}}</s> -
+                                    <b style="color: #DC3545;">đ{{number_format($item->sale_price)}} </b> <br>
                                     
                                     @else
-                                    <b>đ{{number_format($item->price)}} </b>
-                                    @endif   
+                                    <b style="color: #DC3545;">đ{{number_format($item->price)}} </b><br>
+                                    @endif  
+                                    <i>Sản phẩm <strong>uy tín</strong>, <strong>chất lượng</strong> 100%, có <strong>bảo hành</strong></i> 
                                 </small>   
                             </div>
                             <div class="btn-group mt-3 d-flex justify-content-right">
@@ -232,6 +239,7 @@ overflow: hidden;
                             </div>
                         </div>
                     </div>
+                   </a>
                 </div>  
                 @endforeach   
                 {{$hotproducts->links()}}       
@@ -240,7 +248,7 @@ overflow: hidden;
             <hr style="margin: 20px 0px;">
 
             <div class="row bg-light">
-                <h4>Tất cả sản phẩm chúng tôi có</h4>
+                <h4 class="mt-3">Tất cả sản phẩm chúng tôi có</h4>
                 @foreach ($allProduct as $item)
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
@@ -256,19 +264,20 @@ overflow: hidden;
                         </a>
                         <div class="card-body">
                             <a href="#" class="nameproduct">
-                                <h6 class="">{{$item->name}}</h6>
+                                <h6 class=""><strong>{{$item->name}}</strong></h6>
                             </a>
-                            <h6>Thương hiệu: {{$item->category->name ?? 'none'}}</h6>                            
+                            <h6><strong>Sản phẩm</strong>: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted text-right">
-                                    <h6>Giá: </h6>
+                                    <h6><strong>Giá</strong>: </h6>
                                     @if ($item->sale_price > 0)
-                                    <s>đ{{number_format($item->price)}} </s> -
-                                    <b>đ{{number_format($item->sale_price)}} </b> 
+                                    <s>đ{{number_format($item->price)}}</s>  -
+                                    <b style="color: #DC3545;">đ{{number_format($item->sale_price)}} </b> <br>
                                     
                                     @else
-                                    <b>đ{{number_format($item->price)}} </b>
-                                    @endif   
+                                    <b style="color: #DC3545;">đ{{number_format($item->price)}} </b><br>
+                                    @endif  
+                                    <i>Sản phẩm <strong>uy tín</strong>, <strong>chất lượng</strong> 100%, có <strong>bảo hành</strong></i> 
                                 </small>   
                             </div>
                             <div class="btn-group mt-3 d-flex justify-content-right">

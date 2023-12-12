@@ -35,7 +35,7 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'postRegister']);
 Route::get('/logoutAcc', [UserController::class, 'logoutAcc'])->name('logoutAcc');
 
-Route::prefix('/user')->middleware('user')->group(function () {
+Route::middleware('user')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
     Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');

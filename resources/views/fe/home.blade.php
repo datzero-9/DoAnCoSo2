@@ -217,7 +217,7 @@ overflow: hidden;
                         </a>
                         <div class="card-body">
                             <a href="#" class="nameproduct">
-                                <h6><strong>{{Str::limit($item->name, 25, '...')}}</strong></h6>
+                                <h6><strong>{{Str::limit($item->name, 20, '...')}}</strong></h6>
                             </a>
                             <h6><strong>Sản phẩm</strong>: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">

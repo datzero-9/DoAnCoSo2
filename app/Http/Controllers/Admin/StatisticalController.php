@@ -9,6 +9,7 @@ class StatisticalController extends Controller
 {
     public function index()
     {
+        
         return view('admin.statistical.all');
     }
 }

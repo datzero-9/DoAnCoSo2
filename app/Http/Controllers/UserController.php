@@ -67,7 +67,7 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|confirmed|min:6',
 
         ];
 

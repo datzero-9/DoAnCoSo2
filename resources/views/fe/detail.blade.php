@@ -9,9 +9,7 @@
     
                 <div class="card">
                     <div class="container-fliud m-3">
-                        
 
-    
                             <div class="wrapper row ">
                                 <div class="preview col-md-5 mb-3">
                                    
@@ -70,13 +68,13 @@
                                             <label for="soluong">Số lượng đặt mua:</label>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                  <button type="button" class="btn btn-default btn-number fs-5" data-type="minus" data-field="quantity">
+                                                  <button type="button" class="btn btn-default btn-number fs-5 border" data-type="minus" data-field="quantity">
                                                     -
                                                   </button>
                                                 </span>
-                                                <input type="text" id="quantity" name="quantity" class="text-center " value="{{old('quantity') ? old('quantity') : 1}}" min="1" max="100" style="width:70px;border: none;">
+                                                <input type="text" id="quantity" name="quantity" class="text-center border " value="{{old('quantity') ? old('quantity') : 1}}" min="1" max="100" style="width:70px;">
                                                 <span class="input-group-btn">
-                                                  <button type="button" class="btn btn-default btn-number fs-5" data-type="plus" data-field="quantity">
+                                                  <button type="button" class="btn btn-default btn-number fs-5 border" data-type="plus" data-field="quantity">
                                                     +
                                                   </button>
                                                 </span>
@@ -162,8 +160,16 @@
         width: 100%;
     }
     .product-title{
-        font-size : 18px;
+        font-size : 30px;
     }
+    .details {
+        border-left:1px solid #333; 
+    }
+    .price {
+        background-color:#FFF201;
+        padding: 10px 0;
+    }
+  
 </style>
 @endsection
 @section('js')

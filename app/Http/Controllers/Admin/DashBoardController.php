@@ -13,8 +13,8 @@ class DashBoardController extends Controller
 {
     public function index()
     {
-        $order = OrderDetail::orderBy('id', 'desc')->get();
-        // dd($order);
+        $order = Order::orderBy('id', 'desc')->get();
+        
         return view('admin.index', compact('order'));
     }
 

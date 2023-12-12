@@ -13,7 +13,7 @@ Danh sách sản phẩm
 
 
   @if (session('msg'))
-  <div class="alert alert-success my-5 text-center">{{session('msg')}}</div>   
+  <div class="alert alert-success my-1 text-center">{{session('msg')}}</div>   
   @endif
   @if (session('error'))
   <div class="alert alert-danger my-5 text-center">{{session('error')}}</div>   
@@ -44,7 +44,7 @@ Danh sách sản phẩm
               <td>{{$item->sale_price}}</td>
               <td>{{$item->category->name ?? 'none'}}</td>
               <td>
-                <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="200px" style="height: 100px;">
+                <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="150px" style="height: 100px;">
               </td>
               <td>{{$item->created_at}}</td>
               

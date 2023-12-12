@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
 
         $rules = [
-            'name' => 'required',
+            'name' => 'required|max:100',
             'slug' => 'required|unique:products',
             'price' => 'required|integer',
             'sale_price' => 'required|integer',
@@ -52,6 +52,7 @@ class ProductController extends Controller
 
         $message = [
             'name.required' => 'vui lòng nhập tên sản phẩm ',
+            'name.max' => 'Tản phẩm quá dài, tối đa :max kí tự ',
 
             'slug.required' => 'vui lòng nhập đường dẫn ',
             'slug.unique' => 'Đường dẫn này đã tồn tại trên hệ thống',

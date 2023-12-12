@@ -86,7 +86,8 @@ Thêm sản phẩm
                 </div>
                     <div class="form-group">
                         <label for="description">Mô tả sản phẩm:</label>
-                        <textarea name="description" id="description" rows="10" cols="220">            
+                        <textarea name="description" id="description" rows="10" cols="220">
+                            {{ old('description') }}            
                         </textarea>             
                     </div>       
                     <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>

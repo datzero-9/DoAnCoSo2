@@ -42,7 +42,7 @@
                                     </div>
                                     
                                     <small class="">Giá cũ: <s><span>{{number_format($product->sale_price) > 0 ? number_format($product->price) : 'Chưa giảm giá lần nào'}} vnđ</span></s></small><br>
-                                    <small class=" text-danger">Giảm: {{percent($product->sale_price, $product->price)}}%</small>
+                                    <small class=" text-danger">Giảm: {{percent($product->sale_price, $product->price)>0 ? percent($product->sale_price, $product->price) :'0'}}%</small>
                                     <h4 class="price">Giá hiện tại: <span class="text-danger">{{number_format($product->sale_price) > 0 ? number_format($product->sale_price) : number_format($product->price) }} vnđ</span></h4>
                                     <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
                                         <strong>Uy
@@ -53,11 +53,11 @@
                                         <div class="radio d-flex align-items-center">
                                             <h5 class="colors">Màu:</h5>
                                             <label for="" class="mx-3" >
-                                                <input type="radio" name="status" checked="checked" value="0" >
+                                                <input type="radio" name="status" checked="checked" value="trắng" >
                                                Trắng  
                                             </label> 
                                             <label for="" >
-                                                <input type="radio" name="status" checked="checked" value="1">
+                                                <input type="radio" name="status" checked="checked" value="đen">
                                                 đen 
                                             </label>
                                         </div>

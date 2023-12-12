@@ -37,7 +37,7 @@
                                 <td>
                                  <img src="{{asset('storage/images')}}/{{$value['image']}}" class="hinhdaidien">
                                 </td>
-                                <td>{{$value['name']}}</td>
+                                <td width="20%">{{$value['name']}}</td>
                                 {{-- <td class="text-right">
                                     <div class="input-group">
                                         <form action="{{route('updatecart.index',$value['id'])}}" method="get">

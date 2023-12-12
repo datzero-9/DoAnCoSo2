@@ -8,24 +8,38 @@ Giao diện admin
 @endsection 
 
 @section('content')
-{{-- <div class="container">
+<div class="container">
   <table class="table table-bordered">
     <thead>
         <tr>
             <th width="5%">stt</th>
             <th>Mã đơn hàng</th>
-            <th>tình trạng đơn hàng</th>
+            <th>Khách hàng </th>
             <th>Ngày đặt</th>
+            <th></th>
+         
+
         </tr>
     </thead>
     <tbody>
         @forelse ($order as $item)
         <tr>
-          
+          @php
+              // dd($item->customer);
+          @endphp
           <td>{{$loop->iteration}}</td>
-          <td>{{$item->name}}</td>
-          <td>{{$item->price}}</td>
-          <td>{{$item->sale_price}}</td>   
+          <td>{{$item->id}}</td>
+          <td>{{$item->customer->name}}</td>
+          <td>{{$item->created_at}}</td>  
+          <td>
+            <form action="{{route('cartdetail')}}" method="get">
+              @csrf
+              <input type="hidden" name="id" value="{{$item->id}}">
+               <button>xem thông tin</button>
+            </form>
+          </td>
+          
+          
       </tr>
         @empty
         <strong class="">Không tìm thấy sản phẩm</strong>
@@ -33,9 +47,10 @@ Giao diện admin
 
     </tbody>
 </table>
-</div> --}}
+{{$order->links()}}  
+</div>
 
-<div class="container-fluid">
+{{-- <div class="container-fluid">
     <div class="row">
       <div class="col-lg-6">
         <div class="card">
@@ -125,6 +140,6 @@ Giao diện admin
       <!-- /.col-md-6 -->
     </div>
     <!-- /.row -->
-  </div>
+  </div> --}}
 
 @endsection

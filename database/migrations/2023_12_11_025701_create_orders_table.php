@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('address');
             $table->string('note')->nullable();
             $table->timestamps();
-
             $table->foreign('customer_id')->references('id')->on('users');
         });
     }

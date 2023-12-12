@@ -57,5 +57,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('accountuser', AccountUser::class);
+    Route::get('/cartdetail', [DashBoardController::class, 'cartDetail'])->name('cartdetail');
+
     
 });

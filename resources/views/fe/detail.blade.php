@@ -41,9 +41,14 @@
                                         <span class="review-no">999 reviews</span>
                                     </div>
                                     
-                                    <small class="">Giá cũ: <s><span>{{number_format($product->sale_price) > 0 ? number_format($product->price) : 'Chưa giảm giá lần nào'}} vnđ</span></s></small><br>
-                                    <small class=" text-danger">Giảm: {{percent($product->sale_price, $product->price)>0 ? percent($product->sale_price, $product->price) :'0'}}%</small>
+
+                                    @if ($product->sale_price > 0)
+                                    <small class="">Giá cũ: <s><span>{{number_format($product->price)}} vnđ</span></s></small><br>
+                                    <small class=" text-danger">Giảm: {{percent($product->sale_price, $product->price)}}%</small>
                                     <h4 class="price">Giá hiện tại: <span class="text-danger">{{number_format($product->sale_price) > 0 ? number_format($product->sale_price) : number_format($product->price) }} vnđ</span></h4>
+                                    @else
+                                    <h4 class="price">Giá hiện tại: <span class="text-danger">{{number_format($product->sale_price) > 0 ? number_format($product->sale_price) : number_format($product->price) }} vnđ</span></h4>
+                                    @endif             
                                     <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
                                         <strong>Uy
                                             tín</strong>!

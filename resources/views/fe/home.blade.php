@@ -209,7 +209,7 @@ overflow: hidden;
                             <img class="card-img-top img-fluid imgproduct 
                             " src="{{asset('storage/images')}}/{{$item->image}}">
                             <button type="submit" class="border border-0 position-absolute start-0 bg-success rounded-end-circle" style="width:60px;top:5px;borber:none;"><b>Hot</b></button>
-                            @if ($item->sale_price)
+                            @if ($item->sale_price > 0)
                                 
                             <button type="submit" class="border border-0 position-absolute start-0 bg-danger rounded-end-circle" style="top:40px;width:60px;"><b>{{percent($item->sale_price, $item->price)}}%</b></button>
                                 

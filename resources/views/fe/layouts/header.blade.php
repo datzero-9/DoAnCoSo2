@@ -207,9 +207,7 @@ flex-direction: column;
 </nav>
 <div class="container container1">
 <ul style="padding: 0;">
-  <li><a href="{{route('home')}}"> <img
-              src="https://www.thegioididong.com/ContentMwg/images/TGDD/Store/background_sieu_thi_tgdd.png"
-              alt=""></a></li>
+  <li><a href="{{route('home')}}"><h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: 0 0 0 20px;"> MOCO</h2></a></li>
   <li>
       <a href="">Đà nẵng <i class='bx bxs-down-arrow'></i> </a>
   </li>

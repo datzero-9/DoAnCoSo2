@@ -8,21 +8,21 @@ use App\Models\Category;
 use App\Models\Products;
 use App\Models\ImgProducts;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-   private $product;
-   public function __construct()
-   {
-    $this->product = new Products();
-   
-   }
+    private $product;
+    public function __construct()
+    {
+        $this->product = new Products();
+    }
     public function index()
     {
-       
-       $products = Products::orderBy('created_at','desc')
-       ->Search()
-       ->paginate(3); 
+
+        $products = Products::orderBy('created_at', 'desc')
+            ->Search()
+            ->paginate(3);
         return view('admin.product.index', compact('products'));
     }
 
@@ -44,29 +44,30 @@ class ProductController extends Controller
         $rules = [
             'name' => 'required|max:150',
             'slug' => 'required|unique:products',
-            'price' => 'required|integer',
-            'sale_price' => 'required|integer',
+            'price' => 'required|numeric',
+            'sale_price' => 'required|numeric|lte:price',
             'category_id' => 'required',
             'photo' => 'required'
         ];
 
         $message = [
-            'name.required' => 'vui lòng nhập tên sản phẩm ',
-            'name.max' => 'Tản phẩm quá dài, tối đa :max kí tự ',
+            'name.required' => 'Vui lòng nhập tên sản phẩm.',
+            'name.max' => 'Tên sản phẩm không được vượt quá :max kí tự.',
 
-            'slug.required' => 'vui lòng nhập đường dẫn ',
-            'slug.unique' => 'Đường dẫn này đã tồn tại trên hệ thống',
+            'slug.required' => 'Vui lòng nhập đường dẫn.',
+            'slug.unique' => 'Đường dẫn này đã tồn tại trên hệ thống.',
 
+            'price.required' => 'Vui lòng nhập giá sản phẩm.',
+            'price.numeric' => 'Giá sản phẩm phải là số.',
 
-            'price.required' => 'vui lòng nhập nhập giá sản phẩm ',
-            'price.integer' => 'vui lòng nhập số',
+            'sale_price.required' => 'Vui lòng nhập giá sản phẩm khuyến mãi. Nếu không có, hãy nhập số 0.',
+            'sale_price.numeric' => 'Giá sản phẩm khuyến mãi phải là số.',
+            'sale_price.lte' => 'Giá sale không được lớn hơn giá gốc.',
 
-            'sale_price.required' => 'hãy nhập giá sản phảm KM, nếu không có thì nhập số 0',
-            'sale_price.integer' => 'vui lòng nhập số',
-
-            'category_id.required' => 'vui lòng nhập chọn danh mục ',
-            'photo.required' => 'vui lòng chọn ảnh demo'
+            'category_id.required' => 'Vui lòng chọn danh mục.',
+            'photo.required' => 'Vui lòng chọn ảnh demo.'
         ];
+
         $request->validate($rules, $message);
 
         $fileName = $request->photo->getClientOriginalName();
@@ -74,9 +75,9 @@ class ProductController extends Controller
         $request->merge(['image' => $fileName]);
 
         try {
-        //    dd($request -> all());
+            //    dd($request -> all());
             $product = Products::create($request->all());
-            
+
             if ($product && $request->hasFile('photos')) {
                 foreach ($request->photos as $value) {
                     $fileNames = $value->getClientOriginalName();
@@ -86,7 +87,6 @@ class ProductController extends Controller
                         'image' => $fileNames
                     ]);
                 }
-                
             }
             return redirect()->route('product.index')->with('msg', 'Thêm thành công ');
         } catch (\Throwable $th) {
@@ -164,13 +164,13 @@ class ProductController extends Controller
     {
         try {
 
- 
+
 
             // Xóa sản phẩm
             $product->delete();
 
             // Kích hoạt lại ràng buộc khóa ngoại
-            
+
 
             return redirect()->route('product.index')->with('msg', 'xóa thành công ');
         } catch (\Throwable $th) {

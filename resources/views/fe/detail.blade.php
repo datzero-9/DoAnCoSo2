@@ -98,9 +98,9 @@
                     </div>
                 </div>
     
-                <div class="card">
+                <div class="card mt-3">
                     <div class="container-fluid">
-                        <h3>Thông tin chi tiết về Sản phẩm</h3>
+                        <h3 class="mt-3">Thông tin chi tiết về Sản phẩm</h3>
                         <div class="row">
                             <div class="col">
                                {!!$product->description!!}

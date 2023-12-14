@@ -3,7 +3,7 @@
 <div class="container fs-5"><a href="{{route('home')}}"><strong class="text-dark">Trang chủ /</strong></a><a href="" class="text-dark"> Giỏ hàng /</a> <a href=""> Thanh toán</a></div>
 <div class="container">
     @if (session('msg'))
-    <div class="alert alert-success">{{session('msg')}}</div>   
+    <div class="alert alert-success text-center"><strong><h4>{{session('msg')}}</h4></strong></div>   
     @endif
 <hr style="margin: 0; top: 0;">
     <form action="" method="POST" role="form" enctype="multipart/form-data">

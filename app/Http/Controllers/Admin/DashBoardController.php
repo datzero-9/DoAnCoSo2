@@ -38,9 +38,8 @@ class DashBoardController extends Controller
                 echo "Sản phẩm: " . $orderItem->product->name . "\n";
                 echo "Số lượng: " . $orderItem->quantity . "\n";
                 echo "Giá: " . $orderItem->price . "\n";
-                echo "----------------------\n";
+                echo "----------------------\n";         
             }
-
             echo "\n";
         }
     }

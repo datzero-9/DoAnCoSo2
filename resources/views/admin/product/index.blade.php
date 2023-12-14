@@ -39,7 +39,7 @@ Danh sách sản phẩm
             <tr>
               
               <td>{{$loop->iteration}}</td>
-              <td>{{$item->name}}</td>
+              <td width="25%">{{$item->name}}</td>
               <td>{{$item->price}}</td>
               <td>{{$item->sale_price}}</td>
               <td>{{$item->category->name ?? 'none'}}</td>

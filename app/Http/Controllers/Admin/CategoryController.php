@@ -53,12 +53,8 @@ class CategoryController extends Controller
 
         $request->validate($rules, $message);
 
-        // $this->category->addCategory($request);
-        // return redirect()->route('category.index')->with('msg', 'Thêm người dùng thành công');
         try {
-
             Category::create($request->all());
-
             return redirect()->route('category.index')->with('msg', 'thêm mới thành công ');
 
 
@@ -71,18 +67,13 @@ class CategoryController extends Controller
     {
         return 'ok';
     }
-    /**
-     * Display the specified resource.
-     */
+   
 
     public function show(string $id)
     {
-        //
+        
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Category $category)
     {
 

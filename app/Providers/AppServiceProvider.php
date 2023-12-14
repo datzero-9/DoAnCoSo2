@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use App\Helpers\Cart;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,10 @@ class AppServiceProvider extends ServiceProvider
                 'cart' => new Cart()
             ]);
         });
+        // view()->composer("*", function ($view) {
+        //     $view->with([
+        //         'categories' => new Category()
+        //     ]);
+        // });
     }
 }

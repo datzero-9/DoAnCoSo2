@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 
+
 class CheckoutController extends Controller
 {
     public function form()

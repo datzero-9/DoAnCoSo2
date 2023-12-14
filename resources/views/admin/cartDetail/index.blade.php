@@ -17,7 +17,7 @@ Thông tin khách hàng đặt hàng
         <p>Ghi chú: <strong>{{$item->note}}</strong></p>
     @endforeach
 
-  <table class="table table-bordered">
+  <table class="table  table-hover">
     <thead>
         <tr>
             <th width="5%">stt</th>

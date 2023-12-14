@@ -13,7 +13,7 @@ class Category extends Model
 {
     use HasFactory;
     // protected $table = 'categories';
-    protected $fillable = ['name','status','parent_id'];
+    protected $fillable = ['name', 'status', 'parent_id'];
     // protected $primaryKey = 'id';
 
 
@@ -21,6 +21,8 @@ class Category extends Model
     {
         return Category::paginate(6);
     }
-
-  
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'category_id');
+    }
 }

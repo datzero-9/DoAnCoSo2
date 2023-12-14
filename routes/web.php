@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,16 @@ Route::middleware('user')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'form'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'submit_Form']);
 
-  
+    Route::get('/laptop/{category}', [SearchController::class, 'laptop'])->name('laptop.index');
+    Route::get('/manhinh/{category}', [SearchController::class, 'manhinh'])->name('manhinh.index');
+    Route::get('/banphim/{category}', [SearchController::class, 'banphim'])->name('banphim.index');
+    Route::get('/chuot/{category}', [SearchController::class, 'chuot'])->name('chuot.index');
+    Route::get('/tainghe/{category}', [SearchController::class, 'tainghe'])->name('tainghe.index');
+
+    Route::get('/search', [SearchController::class, 'searchProduct'])->name('search.index');
+    
+    // Route::get('/sanphamkhac/{category}', [SearchController::class, 'sanPhamKhac'])->name('sanphamkhac.index');
+
 });
 
 Route::prefix('/admin')->middleware('admin')->group(function () {

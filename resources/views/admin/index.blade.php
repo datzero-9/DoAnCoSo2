@@ -4,12 +4,12 @@ Admin | master layouts
 @endsection 
 
 @section('title-page')
-Giao diện admin
+ĐƠN HÀNG NGÀY HÔM NAY
 @endsection 
 
 @section('content')
 <div class="container">
-  <table class="table table-bordered">
+  <table class="table table-hover">
     <thead>
         <tr>
             <th width="5%">stt</th>
@@ -17,8 +17,6 @@ Giao diện admin
             <th>Khách hàng </th>
             <th>Ngày đặt</th>
             <th></th>
-         
-
         </tr>
     </thead>
     <tbody>

@@ -21,13 +21,14 @@ class Products extends Model
   
  public function category()
  {
-     return $this->belongsTo(Category::class);
+     return $this->belongsTo(Category::class,'category_id');
  }
  //localScope
  public function scopeSearch($query){
     if($key = request()->key){
-        $query = $query->where('name','like','%'.$key.'%');      
+        $query = $query->where('name','like','%'.$key.'%');  
        }
+       
        return $query;
  }
  public function images()

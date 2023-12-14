@@ -213,11 +213,12 @@ flex-direction: column;
   </li>
   <li><a href="">Tin tức</a> <i class='bx bx-news'></i></li>
   <li>
-    <form action="" method="get">
+    <form action="{{route('search.index')}}" method="get">
           <div class="search-ajax">
             <div class="">
-              <input type="text" placeholder="tìm kiếm sản phẩm" name="key" class="input-search-ajax">
-              <button class='bx bx-search-alt-2'></button>
+                @csrf
+                <input type="text" placeholder="tìm kiếm sản phẩm" name="key" class="input-search-ajax">
+                <button type="submit" class='bx bx-search-alt-2'></button>
             </div>
               <div class="display-ajax">
                 
@@ -256,26 +257,12 @@ flex-direction: column;
 <hr style="margin: 0; top: 0;">
 <nav class="container container2">
 <ul style="padding: 0; margin: 0 0 2px 0;">
-  <li>
-      <a href="">Laptop <i class='bx bx-laptop'></i></a>
-      <div class="submenu">
-          <ul style="margin: 0; padding: 0;">
-              <li><a href=""><b>Phụ kiện a</b></a></li>
-              <li><a href=""><b>Phụ kiện a</b></a></li>
-              <li><a href=""><b>Phụ kiện a</b></a></li>
-              <li><a href=""><b>Phụ kiện a</b></a></li>
-              <li><a href=""><b>Phụ kiện a</b></a></li>
-              <li><a href=""><b>Phụ kiện a</b></a></li>
-
-          </ul>
-      </div>
-
-  </li>
-  <li><a href="">Màn hình <i class='bx bx-tv'></i></a> </li>
-  <li><a href="">Bàn phím <i class='bx bxs-keyboard'></i></a> </li>
-  <li><a href="">Chuột <i class='bx bx-mouse-alt'></i></a> </li>
-  <li><a href="">Tai nghe <i class='bx bx-headphone'></i></a> </li>
-  <li><a href="">Sản phẩm khác...</a></li>
+  <li><a href="{{route('laptop.index','11')}}">Laptop <i class='bx bx-laptop'></i></a></li>
+  <li><a href="{{route('manhinh.index','9')}}">Màn hình <i class='bx bx-tv'></i></a> </li>
+  <li><a href="{{route('banphim.index','6')}}">Bàn phím <i class='bx bxs-keyboard'></i></a> </li>
+  <li><a href="{{route('chuot.index','7')}}">Chuột <i class='bx bx-mouse-alt'></i></a> </li>
+  <li><a href="{{route('tainghe.index','8')}}">Tai nghe <i class='bx bx-headphone'></i></a> </li>
+  {{-- <li><a href="{{route('sanphamkhac.index')}}">Sản phẩm khác...</a></li> --}}
 </ul>
 </nav>
 </header>

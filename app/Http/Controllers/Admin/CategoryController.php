@@ -124,13 +124,13 @@ class CategoryController extends Controller
     {
        
         try {
-            DB::statement("SET FOREIGN_KEY_CHECKS=0");
+            
 
             // Xóa sản phẩm
             $category->delete();
 
             // Kích hoạt lại ràng buộc khóa ngoại
-            DB::statement("SET FOREIGN_KEY_CHECKS=1");
+         
             
             return redirect()->route('category.index')->with('msg', 'xóa thành công ');
         } catch (\Throwable $th) {

@@ -164,13 +164,13 @@ class ProductController extends Controller
     {
         try {
 
-            DB::statement("SET FOREIGN_KEY_CHECKS=0");
+ 
 
             // Xóa sản phẩm
             $product->delete();
 
             // Kích hoạt lại ràng buộc khóa ngoại
-            DB::statement("SET FOREIGN_KEY_CHECKS=1");
+            
 
             return redirect()->route('product.index')->with('msg', 'xóa thành công ');
         } catch (\Throwable $th) {

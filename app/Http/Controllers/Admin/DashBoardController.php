@@ -24,24 +24,11 @@ class DashBoardController extends Controller
     }
     public function cartDetail(Request $req)
     {
-        // dd($req->id);
-        // $OrderDetail = OrderDetail::where('order_id',$req->id)->get();
+        
         // $order = Order::find($req->id);
-        // return view('admin.cartDetail.index', compact('OrderDetail','order'));
-
-        $orders = Order::has('orderDetails')->with('orderDetails.product')->get();
-
-        foreach ($orders as $order) {
-            echo "Đơn hàng #" . $order->id . ":\n";
-
-            foreach ($order->orderDetails as $orderItem) {
-                echo "Sản phẩm: " . $orderItem->product->name . "\n";
-                echo "Số lượng: " . $orderItem->quantity . "\n";
-                echo "Giá: " . $orderItem->price . "\n";
-                echo "----------------------\n";         
-            }
-            echo "\n";
-        }
+        $orders = Order::has('orderDetails')->with('orderDetails.product')->where('id',$req->id) ->get();
+        return view('admin.cartDetail.index', compact('orders'));
+      
     }
 }
 

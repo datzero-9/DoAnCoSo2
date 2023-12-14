@@ -24,9 +24,7 @@ Giao diện admin
     <tbody>
         @forelse ($order as $item)
         <tr>
-          @php
-              // dd($item->customer);
-          @endphp
+          
           <td>{{$loop->iteration}}</td>
           <td>{{$item->id}}</td>
           <td>{{$item->customer->name}}</td>
@@ -35,8 +33,9 @@ Giao diện admin
             <form action="{{route('cartdetail')}}" method="get">
               @csrf
               <input type="hidden" name="id" value="{{$item->id}}">
-               <button>xem thông tin</button>
+               <button class="btn btn-warning">xem thông tin</button>
             </form>
+            {{-- <a href="{{route('cartdetail')}}" class="btn btn-warning">xem thông tin</a> --}}
           </td>
           
           

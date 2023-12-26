@@ -64,7 +64,7 @@ class ProductController extends Controller
             'sale_price.required' => 'Vui lòng nhập giá sản phẩm khuyến mãi. Nếu không có, hãy nhập số 0.',
             'sale_price.numeric' => 'Giá sản phẩm khuyến mãi phải là số.',
             'sale_price.lte' => 'Giá khuyến mãi không được lớn hơn giá gốc.',
-            
+
 
             'category_id.required' => 'Vui lòng chọn danh mục.',
             'photo.required' => 'Vui lòng chọn ảnh demo.'
@@ -128,7 +128,7 @@ class ProductController extends Controller
             'price' => 'required|integer',
             'sale_price' => 'required|integer',
             'category_id' => 'required',
-            'photo' => 'required'
+            // 'photo' => 'required'
         ];
 
         $message = [
@@ -146,16 +146,39 @@ class ProductController extends Controller
             'sale_price.integer' => 'vui lòng nhập số',
 
             'category_id.required' => 'vui lòng nhập chọn danh mục ',
-            'photo.required' => 'vui lòng chọn ảnh demo'
+            // 'photo.required' => 'vui lòng chọn ảnh demo'
         ];
         $request->validate($rules, $message);
 
+        // try {
+        //     $product->update($request->all());
+        //     return redirect()->route('product.index')->with('msg', 'update thành công ');
+        // } catch (\Throwable $th) {
+        //     return redirect()->back()->with('msg', 'Update không thành công ');
+        // }
 
+
+        // Kiểm tra xem có tệp tin ảnh mới được tải lên hay không
+        // dd($request->hasFile('photo'));
+        if ($request->hasFile('photo')) {
+            // $file = $request->file('photo');
+            $fileName = $request->photo->getClientOriginalName();           
+            $product->image = $request->photo->storeAs($fileName);          
+        }
+        // Cập nhật các trường dữ liệu khác từ yêu cầu HTTP
+        $product->name = $request->name;
+        $product->slug = $request->slug;
+        $product->price = $request->price;
+        $product->sale_price = $request->sale_price;
+        $product->category_id = $request->category_id;
+
+        // Lưu các thay đổi vào cơ sở dữ liệu
+        // dd($product->all());
         try {
-            $product->update($request->all());
-            return redirect()->route('product.index')->with('msg', 'update thành công ');
+            $product->save();
+            return redirect()->route('product.index')->with('msg', 'Cập nhật thành công');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('msg', 'update không thành công ');
+            return redirect()->back()->with('msg', 'Cập nhật không thành công');
         }
     }
 
@@ -166,14 +189,8 @@ class ProductController extends Controller
     {
         try {
 
-
-
             // Xóa sản phẩm
             $product->delete();
-
-            // Kích hoạt lại ràng buộc khóa ngoại
-
-
             return redirect()->route('product.index')->with('msg', 'xóa thành công ');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'xóa không thành công ');

@@ -1,59 +1,58 @@
 @extends('admin.master')
 @section('title')
-Admin | thông tin khách hàng đặt hàng
-@endsection 
+    Admin | thông tin khách hàng đặt hàng
+@endsection
 
 @section('title-page')
-Thông tin khách hàng đặt hàng
-@endsection 
+    Thông tin khách hàng đặt hàng
+@endsection
 
 @section('content')
-<div class="container">
-   
-    @foreach ($orders as $item)
-        <p>Khách hàng: <strong>{{$item->customer->name}}</strong></p>
-        <p>Email: <strong>{{$item->customer->email}}</strong></p>
-        <p>Số điện thoại: <strong>{{$item->phone}}</strong></p>
-        <p>Địa chỉ giao hàng: <strong>{{$item->address}}</strong></p>
-        <p>Ghi chú: <strong>{{$item->note}}</strong></p>
-    @endforeach
+    <div class="container">
 
-  <table class="table  table-hover">
-    <thead>
-        <tr>
-            <th width="5%">stt</th>
-            <th>Đơn hàng</th>
-            <th>Ảnh</th>
-            <th>Sán phẩm</th>
-            <th>Giá tiền </th>
-            <th>Số lượng </th>
-            
-        
-        </tr>
-    </thead>
-    <tbody>
-        
-        @forelse ($orders as $item)
-       @foreach ($item->orderDetails as $items)
-           {{-- {{dd($items);}} --}}
-           <tr>
+        @foreach ($orders as $item)
+            <p><strong>Khách hàng:</strong> {{ $item->customer->name }}</p>
+            <p><strong>Email:</strong> {{ $item->customer->email }}</p>
+            <p><strong>Số điện thoại:</strong> {{ $item->phone }}</p>
+            <p><strong>Địa chỉ giao hàng:</strong> {{ $item->address }}</p>
+            <p><strong>Ghi chú:</strong> {{ $item->note }}</p>
+        @endforeach
 
-             {{-- <td>{{$item->product->name}}</td> --}}
-             <td>{{$items->id}}</td>
-             <td width="40%">{{$items->product->name}}</td>
-             <td width="10%"><img style="width: 70px;" src="{{asset('storage/images')}}/{{$items->product->image}}" alt=""></td>
-             <td>{{$items->product->category->name}}</td>  
-             <td>{{$items->product->sale_price > 0 ? number_format($items->product->sale_price) : number_format($items->product->price)}} vnđ</td>               
-             <td>x{{$items->quantity }}</td>               
-         </tr>
-         <tr ><td colspan="6">Tổng tiền: {{number_format($item->total_amount)}}</td></tr>
-       @endforeach
-        @empty
-        <strong class="">Không tìm thấy sản phẩm</strong>
-        @endforelse
-    </tbody>
-</table>
+        <table class="table  table-hover"></strong>
+            <thead>
+                <tr>
+                    <th width="5%">STT</th>
+                    <th>Đơn hàng</th>
+                    <th>Ảnh</th>
+                    <th>Sán phẩm</th>
+                    <th>Giá tiền </th>
+                    <th>Số lượng </th>
+                </tr>
+            </thead>
+            <tbody>
 
-</div>
+                @forelse ($orders as $item)
+                    @foreach ($item->orderDetails as $items)
+                        {{-- {{dd($items);}} --}}
+                        <tr>
+                            {{-- <td>{{$item->product->name}}</td> --}}
+                            <td>{{ $loop->iteration }}</td>
+                            <td width="40%">{{ $items->product->name }}</td>
+                            <td width="10%"><img style="width: 70px;"
+                                    src="{{ asset('storage/images') }}/{{ $items->product->image }}" alt=""></td>
+                            <td>{{ $items->product->category->name }}</td>
+                            <td>{{ $items->product->sale_price > 0 ? number_format($items->product->sale_price) : number_format($items->product->price) }}
+                                vnđ</td>
+                            <td>x{{ $items->quantity }}</td>
+                        </tr>
+                    @endforeach
+                    <tr ><td colspan="6" class="text-right"><h5><strong>Tổng tiền:</strong> {{number_format($item->total_amount)}}</h5></td></tr>
+                @empty
+                    <strong class="">Không tìm thấy sản phẩm</strong>
+                @endforelse
+            </tbody>
+        </table>
+
+    </div>
 
 @endsection

@@ -12,8 +12,6 @@ Thêm Danh Mục
         @if (session('msg'))
         <div class="alert alert-danger">{{session('msg')}}</div>   
         @endif
-        <hr>
-
         <form action="{{route('category.store')}}" method="POST" role="form" >
             @csrf
 

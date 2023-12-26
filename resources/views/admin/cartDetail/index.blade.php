@@ -9,6 +9,7 @@ Thông tin khách hàng đặt hàng
 
 @section('content')
 <div class="container">
+   
     @foreach ($orders as $item)
         <p>Khách hàng: <strong>{{$item->customer->name}}</strong></p>
         <p>Email: <strong>{{$item->customer->email}}</strong></p>
@@ -45,13 +46,14 @@ Thông tin khách hàng đặt hàng
              <td>{{$items->product->sale_price > 0 ? number_format($items->product->sale_price) : number_format($items->product->price)}} vnđ</td>               
              <td>x{{$items->quantity }}</td>               
          </tr>
+         <tr ><td colspan="6">Tổng tiền: {{number_format($item->total_amount)}}</td></tr>
        @endforeach
         @empty
         <strong class="">Không tìm thấy sản phẩm</strong>
         @endforelse
     </tbody>
 </table>
-<div > <p class="text-right">tổng tiền: {{number_format($item->total_amount)}}</p></div>
+
 </div>
 
 @endsection

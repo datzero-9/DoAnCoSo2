@@ -12,8 +12,6 @@ Cập nhật
         @if (session('msg'))
         <div class="alert alert-danger">{{session('msg')}}</div>   
         @endif
-        <hr>
-
         <form action="{{route('category.update', $category)}}" method="POST" role="form" >
             @method('PUT')
             @csrf
@@ -26,14 +24,12 @@ Cập nhật
                 @enderror
             </div>
 
-           
-
             <div class="form-group">
                 <label for="category">Danh mục cha:</label>
                 <select class="form-control" id="category" name="parent_id" >  
                          <option value="">chọn danh mục</option>              
                     @foreach ($categories as $item)
-                        <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : ''}}>{{$item->name}}</option> 
+                        <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : '0'}}>{{$item->name}}</option> 
                     @endforeach                
                 </select>
             </div>

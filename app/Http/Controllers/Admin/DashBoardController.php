@@ -19,16 +19,16 @@ class DashBoardController extends Controller
     public function index()
     {
         $order = Order::orderBy('id', 'desc')->paginate(15);
-
+        // dd($order);
         return view('admin.index', compact('order'));
     }
     public function cartDetail(Request $req)
     {
-        
+
         // $order = Order::find($req->id);
-        $orders = Order::has('orderDetails')->with('orderDetails.product')->where('id',$req->id) ->get();
+        $orders = Order::has('orderDetails')->with('orderDetails.product')->where('id', $req->id)->get();
+        // dd($orders);
         return view('admin.cartDetail.index', compact('orders'));
-      
     }
 }
 

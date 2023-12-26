@@ -19,7 +19,6 @@ Danh sách sản phẩm
   <div class="alert alert-danger my-5 text-center">{{session('error')}}</div>   
   @endif
 
-   <hr>
   <table class="table table-bordered">
         <thead>
             <tr>
@@ -40,8 +39,8 @@ Danh sách sản phẩm
               
               <td>{{$loop->iteration}}</td>
               <td width="25%">{{$item->name}}</td>
-              <td>{{$item->price}}</td>
-              <td>{{$item->sale_price}}</td>
+              <td>{{number_format($item->price)}}</td>
+              <td>{{number_format($item->sale_price)}}</td>
               <td>{{$item->category->name ?? 'none'}}</td>
               <td>
                 <img src="{{asset('storage/images')}}/{{$item->image}}" alt="" width="150px" style="height: 100px;">

@@ -44,7 +44,7 @@ class ProductController extends Controller
         $rules = [
             'name' => 'required|max:150',
             'slug' => 'required|unique:products',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|gt:0',
             'sale_price' => 'required|numeric|lte:price',
             'category_id' => 'required',
             'photo' => 'required'
@@ -59,10 +59,12 @@ class ProductController extends Controller
 
             'price.required' => 'Vui lòng nhập giá sản phẩm.',
             'price.numeric' => 'Giá sản phẩm phải là số.',
+            'price.gt' => 'Giá sản phẩm phải lớn hơn 0 vnd.',
 
             'sale_price.required' => 'Vui lòng nhập giá sản phẩm khuyến mãi. Nếu không có, hãy nhập số 0.',
             'sale_price.numeric' => 'Giá sản phẩm khuyến mãi phải là số.',
-            'sale_price.lte' => 'Giá sale không được lớn hơn giá gốc.',
+            'sale_price.lte' => 'Giá khuyến mãi không được lớn hơn giá gốc.',
+            
 
             'category_id.required' => 'Vui lòng chọn danh mục.',
             'photo.required' => 'Vui lòng chọn ảnh demo.'

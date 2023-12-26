@@ -12,7 +12,6 @@ Sửa sản phẩm
         @if (session('msg'))
         <div class="alert alert-danger">{{session('msg')}}</div>   
         @endif
-        <hr>
 
         <form action="{{route('product.update',$product)}}" method="POST" role="form" enctype="multipart/form-data">
             @csrf
@@ -52,7 +51,7 @@ Sửa sản phẩm
                 <div class="form-group">
                     <label for="category_id">Chọn danh mục:</label>
                     <select class="form-control" id="category_id" name="category_id" >  
-                             <option value="">chọn danh mục</option>  
+                             <option value="0">chọn danh mục</option>  
                              @php
                                  showCategories($categories);
                              @endphp
@@ -68,7 +67,7 @@ Sửa sản phẩm
 
             <div class="col-md-6"><div class="form-group">
                 <label for="">Ảnh:</label>
-                <input type="file" class="form-control" id="photo" name="photo">
+                <input type="file" class="form-control" id="photo" name="photo" value="{{$product->image}}">
               
             </div>
             @error('photo')

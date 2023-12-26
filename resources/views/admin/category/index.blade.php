@@ -10,13 +10,11 @@ Danh sách sản phẩm
 @section('content')
 
 <div class="content">
-<a href="{{route('category.create')}}" class="btn btn-success">Thêm danh mục mới +</a>
+{{-- <a href="{{route('category.create')}}" class="btn btn-success">Thêm danh mục mới +</a> --}}
 
   @if (session('msg'))
   <div class="alert alert-success my-5 text-center">{{session('msg')}}</div>   
   @endif
-
-   <hr>
   <table class="table table-bordered">
     <thead>
         <tr>
@@ -25,8 +23,7 @@ Danh sách sản phẩm
             <th>parent-id</th>
             <th>Thời gian tạo</th>
             <th width="15%">Trạng thái</th>
-            <th width="5%">Edit</th>
-            <th width="5%">Delete</th>
+            <th colspan="2" width="5%"></th>            
         </tr>
     </thead>
     <tbody>
@@ -38,7 +35,7 @@ Danh sách sản phẩm
         <td>{{$item->parent_id}}</td>
         <td>{{$item->created_at}}</td>
         <td> {!!$item->status ? '<span class="btn btn-success"> hiện  </span>':'<span class="btn btn-danger"> ẩn </span>'!!} </td>
-        <td><a href="{{route('category.edit',$item)}}" class="btn btn-info">sua</a></td>
+        <td><a href="{{route('category.edit',$item)}}" class="btn btn-info">sửa</a></td>
         <td> 
           <form action="{{route('category.destroy',$item)}}" method="POST">
             @method('DELETE')

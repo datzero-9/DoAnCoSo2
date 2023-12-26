@@ -12,8 +12,6 @@ Thêm sản phẩm
         @if (session('msg'))
         <div class="alert alert-danger">{{session('msg')}}</div>   
         @endif
-        <hr>
-
         <form action="{{route('product.store')}}" method="POST" role="form" enctype="multipart/form-data">
             @csrf
 
@@ -28,14 +26,14 @@ Thêm sản phẩm
                 </div>
                 <div class="form-group">
                     <label for="">Đường dẫn slug:</label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Nhập tên sản phẩm" value="{{old('slug')}}">
+                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Đường dẫn " value="{{old('slug')}}">
                     @error('slug')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="price">Giá sản phẩm</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Nhập tên sản phẩm" value="{{old('price')}}">
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm" value="{{old('price')}}">
                     @error('price')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -43,7 +41,7 @@ Thêm sản phẩm
                 
                 <div class="form-group">
                     <label for="sale_price">Giá khuyễn mãi:</label>
-                    <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="Nhập tên sản phẩm" value="{{old('sale_price')}}">
+                    <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="Nhập giá khuyến mãi" value="{{old('sale_price')}}">
                     @error('sale_price')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -51,7 +49,7 @@ Thêm sản phẩm
                 
     
                 <div class="form-group">
-                    <label for="category_id">Danh mục cha:</label>
+                    <label for="category_id">Danh mục:</label>
                     <select class="form-control" id="category_id" name="category_id" >  
                              <option value="0">chọn danh mục</option>              
                       @php

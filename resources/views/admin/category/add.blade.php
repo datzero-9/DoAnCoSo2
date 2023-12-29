@@ -3,7 +3,7 @@
 Admin | Thêm Danh Mục
 @endsection
 @section('title-page')
-Thêm Danh Mục
+Thêm danh mục
 @endsection
 
 

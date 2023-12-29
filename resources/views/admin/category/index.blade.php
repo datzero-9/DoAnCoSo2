@@ -4,7 +4,7 @@ Admin | category
 @endsection 
 
 @section('title-page')
-Danh sách sản phẩm
+Danh mục sản phẩm
 @endsection 
 
 @section('content')
@@ -15,7 +15,7 @@ Danh sách sản phẩm
   @if (session('msg'))
   <div class="alert alert-success my-5 text-center">{{session('msg')}}</div>   
   @endif
-  <table class="table table-bordered">
+  <table class="table table-hover">
     <thead>
         <tr>
             <th width="5%">STT</th>

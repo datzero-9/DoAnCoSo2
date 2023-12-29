@@ -21,8 +21,21 @@ class CheckoutController extends Controller
     public function submit_Form(Request $req, Cart $cart)
     {
         $id_user =  Auth::user()->id;
-        //   dd($cart->totalprice);
+        //   dd( $id_user);
         $orderDate =  Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $rules = [
+            'phone' => 'required|numeric|min:10',
+            'address' => 'required',
+        ];
+        $message = [
+            'phone.required' => 'Vui lòng nhập số điện thoại',
+            'phone.numeric' => 'Số điện thoại phải là số',
+            'phone.min' => 'Số điện thoại tối thiểu :min số',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+        ];
+
+        $req->validate($rules, $message);
+
         $order = Order::create([
             'customer_id' => $id_user,
             'total_amount' => $cart->totalprice,
@@ -31,11 +44,12 @@ class CheckoutController extends Controller
             'note' => $req->note,
             'order_date' => $orderDate
         ]);
-
+        // dd($order);
         if ($order) {
             $order_id = $order->id;
+            // dd($cart->items);
             foreach ($cart->items as $key => $value) {
-                // dd($cart);
+                // dd($value);
                 $quantity = $value['quantity'];
                 OrderDetail::create([
                     'order_id' => $order_id,

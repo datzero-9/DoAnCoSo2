@@ -222,7 +222,7 @@ overflow: hidden;
                             <h6><strong>Sản phẩm</strong>: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted text-right">
-                                    <h6><strong>Giá</strong>: </h6>
+                                    {{-- <h6><strong>Giá</strong>: </h6> --}}
                                     @if ($item->sale_price > 0)
                                     <s>đ{{number_format($item->price)}}</s> -
                                     <b style="color: #DC3545;">đ{{number_format($item->sale_price)}} </b> <br>
@@ -269,7 +269,7 @@ overflow: hidden;
                             <h6><strong>Sản phẩm</strong>: {{$item->category->name ?? 'none'}}</h6>                            
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted text-right">
-                                    <h6><strong>Giá</strong>: </h6>
+                                    {{-- <h6><strong>Giá</strong>: </h6> --}}
                                     @if ($item->sale_price > 0)
                                     <s>đ{{number_format($item->price)}}</s> -
                                     <b style="color: #DC3545;">đ{{number_format($item->sale_price)}} </b> <br>

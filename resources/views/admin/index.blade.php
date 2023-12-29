@@ -4,7 +4,7 @@ Admin | master layouts
 @endsection 
 
 @section('title-page')
-ĐƠN HÀNG NGÀY HÔM NAY
+Đơn hàng ngày hôm nay
 @endsection 
 
 @section('content')
@@ -12,7 +12,7 @@ Admin | master layouts
   <table class="table table-hover">
     <thead>
         <tr>
-            <th width="5%">stt</th>
+            <th width="5%">STT</th>
             <th>Mã đơn hàng</th>
             <th>Khách hàng </th>
             <th>Ngày đặt</th>

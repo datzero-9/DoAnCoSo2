@@ -17,10 +17,10 @@ class Category extends Model
     // protected $primaryKey = 'id';
 
 
-    public function getAll()
-    {
-        return Category::paginate(6);
-    }
+    // public function getAll()
+    // {
+    //     return Category::paginate(6);
+    // }
     public function products()
     {
         return $this->hasMany(Products::class, 'category_id');

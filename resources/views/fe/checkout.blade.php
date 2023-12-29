@@ -16,7 +16,7 @@
             </div>
             <div class="form-group ">
                 <label for="">Tên:</label>
-                <input type="text" class="form-control" id="productName" name="name"  value="{{Auth::user()->name}}" onkeyup="ChangeToSlug();">
+                <input type="text" class="form-control" id="productName" name="name"  value="{{Auth::user()->name}}">
                 @error('name')
                     <span class="text-danger">{{$message}}</span>
                 @enderror

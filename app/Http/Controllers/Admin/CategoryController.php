@@ -8,21 +8,22 @@ use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use App\Models\Products;
 
+
 // use App\Http\Requests\Category\StoreCategoryRequest;
 
 
 
 class CategoryController extends Controller
 {
-    private $category;
+    // private $category;
 
-    public function __construct()
-    {
-        $this->category = new Category();
-    }
+    // public function __construct()
+    // {
+    //     // $this->category = new Category();
+    // }
     public function index()
     {
-        $categories = $this->category->getAll();
+        $categories = Category::paginate(6);
         return view('admin.category.index', compact('categories'));
     }
 
@@ -95,7 +96,7 @@ class CategoryController extends Controller
         ];
         $message = [
             'name.required' => 'bắt buộc nhập thông tin',
-            'name.unique' => 'sản phẩm này đã tồn tại',
+            'name.unique' => 'Danh mục này đã tồn tại',
 
         ];
 

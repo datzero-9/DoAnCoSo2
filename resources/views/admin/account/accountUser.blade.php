@@ -12,10 +12,8 @@ Dánh sách tài khoản
         @if (session('msg'))
         <div class="alert alert-danger text-center">{{session('msg')}}</div>   
         @endif
-        <hr>
-        <hr>
-        
-        <table class="table table-bordered">
+      
+        <table class="table table-hover">
           
           <thead>
               <tr>

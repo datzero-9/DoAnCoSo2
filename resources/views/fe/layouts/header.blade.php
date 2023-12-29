@@ -234,10 +234,14 @@ flex-direction: column;
   <a href="{{route('cart.index')}}">Giỏ hàng 
     <div type="button" class="position-relative">
         <a href=""> <i class='bx bxs-cart-alt fs-5'></i></a>
+        @if ($cart->totalquantity > 0)
         <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{$cart->totalquantity}}
-        </span>
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{$cart->totalquantity}}
+    </span>
+        @else
+            
+        @endif
     </div>
   </a>
 </li>

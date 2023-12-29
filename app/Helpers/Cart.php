@@ -66,9 +66,7 @@ class Cart
         return $total;
     }
     public function clear()
-    {
-        
-            session(['cart' =>  null]);
-      
+    {        
+            session(['cart' =>  null]);      
     }
 }

@@ -11,11 +11,17 @@
     <div class="container">
 
         @foreach ($orders as $item)
-            <p><strong>Khách hàng:</strong> {{ $item->customer->name }}</p>
-            <p><strong>Email:</strong> {{ $item->customer->email }}</p>
-            <p><strong>Số điện thoại:</strong> {{ $item->phone }}</p>
-            <p><strong>Địa chỉ giao hàng:</strong> {{ $item->address }}</p>
-            <p><strong>Ghi chú:</strong> {{ $item->note }}</p>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><strong>Khách hàng:</strong> {{ $item->customer->name }}</p>
+                    <p><strong>Email:</strong> {{ $item->customer->email }}</p>
+                    <p><strong>Số điện thoại:</strong> {{ $item->phone }}</p>
+                </div>
+                <div class="col-sm-8">
+                    <p><strong>Địa chỉ giao hàng:</strong> {{ $item->address }}</p>
+                    <p><strong>Ghi chú:</strong> {{ $item->note }}</p>
+                </div>
+            </div>
         @endforeach
 
         <table class="table  table-hover"></strong>
@@ -46,7 +52,11 @@
                             <td>x{{ $items->quantity }}</td>
                         </tr>
                     @endforeach
-                    <tr ><td colspan="6" class="text-right"><h5><strong>Tổng tiền:</strong> {{number_format($item->total_amount)}}</h5></td></tr>
+                    <tr>
+                        <td colspan="6" class="text-right">
+                            <h5><strong>Tổng tiền:</strong> {{ number_format($item->total_amount) }} vnđ   <a href="" class="btn btn-warning">Xác nhận</a></h5>
+                        </td>
+                    </tr>
                 @empty
                     <strong class="">Không tìm thấy sản phẩm</strong>
                 @endforelse

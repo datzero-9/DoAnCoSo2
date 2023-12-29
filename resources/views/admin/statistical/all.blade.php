@@ -4,7 +4,7 @@
 @endsection
 
 @section('title-page')
-    Danh sách sản phẩm
+    Doanh thu bán sản phẩm  
 @endsection
 
 @section('content')
@@ -18,10 +18,10 @@
             <div class="alert alert-danger my-5 text-center">{{ session('error') }}</div>
         @endif
 
-        <table class="table table-bordered text-center">
+        <table class="table table table-hover text-center">
             <thead>
                 <tr>
-                    <th width="5%">STT</th>
+                    <th width="5%">Mã đơn hàng</th>
                     <th width="30%">Loại sản phẩm</th>
                     <th width="10%">Số lượng bán ra</th>
                     <th width="15%">Tiền bán sản phẩm</th>
@@ -40,7 +40,7 @@
                     @endphp
                     @foreach ($item->orderDetails as $items)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $items->id }}</td>
                             <td>{{ $items->product->name }}</td>
                             <td>x{{ $items->quantity }}</td>
                             <td>{{ number_format($items->price * $items->quantity) }}</td>
@@ -50,7 +50,6 @@
                             $totalProduct = $totalProduct + $items->quantity;
                         @endphp
                     @endforeach
-
 
                 @empty
                     <strong class="">Doanh thu không tồn tại</strong>
@@ -62,12 +61,6 @@
                     <td class="text-center"><strong>Tổng doanh thu: </strong>{{ number_format($totalMoney) }}</td>
                     <td><a href="" class="btn btn-primary">Quay lại</a></td>
                 </tr>
-
-
-
-
-
-
             </tbody>
         </table>
 

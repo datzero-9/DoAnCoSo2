@@ -19,14 +19,14 @@ Danh sách sản phẩm
   <div class="alert alert-danger my-5 text-center">{{session('error')}}</div>   
   @endif
 
-  <table class="table table-bordered">
+  <table class="table table-hover">
         <thead>
             <tr>
-                <th width="5%">stt</th>
-                <th>Tên SP</th>
+                <th width="5%">STT</th>
+                <th width="20%">Tên SP</th>
                 <th>Giá</th>
                 <th>Giá KM</th>
-                <th>Danh mục</th>
+                <th width="10%">Danh mục</th>
                 <th>Ảnh</th>
                 <th>Ngày tạo</th>
                 <th>Edit</th>

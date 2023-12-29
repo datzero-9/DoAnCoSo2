@@ -24,7 +24,6 @@ class DashBoardController extends Controller
     }
     public function cartDetail(Request $req)
     {
-
         // $order = Order::find($req->id);
         $orders = Order::has('orderDetails')->with('orderDetails.product')->where('id', $req->id)->get();
         // dd($orders);

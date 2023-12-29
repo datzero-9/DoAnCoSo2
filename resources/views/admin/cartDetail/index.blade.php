@@ -8,6 +8,15 @@
 @endsection
 
 @section('content')
+    <style>
+        .xacnhan {
+            background-color: #0D6EFD;
+        }
+
+        .xacnhan2 {
+            background-color: #FFF200;
+        }
+    </style>
     <div class="container">
 
         @foreach ($orders as $item)
@@ -23,7 +32,7 @@
                 </div>
             </div>
         @endforeach
-
+        
         <table class="table  table-hover"></strong>
             <thead>
                 <tr>
@@ -54,7 +63,7 @@
                     @endforeach
                     <tr>
                         <td colspan="6" class="text-right">
-                            <h5><strong>Tổng tiền:</strong> {{ number_format($item->total_amount) }} vnđ   <a href="" class="btn btn-warning">Xác nhận</a></h5>
+                            <h5><button id="xacnhan" href="" class=" btn xacnhan">Chưa xác nhận</button></h5>  <h5><strong>Tổng tiền:</strong> {{ number_format($item->total_amount) }} vnđ </h5>
                         </td>
                     </tr>
                 @empty
@@ -64,5 +73,17 @@
         </table>
 
     </div>
+    <script>
+        var xacnhan = document.querySelector(".xacnhan");
 
+        // Gán sự kiện click cho nút
+        xacnhan.addEventListener("click", function() {
+            xacnhan.classList.toggle("xacnhan2");
+            if (xacnhan.classList.contains("xacnhan2")) {
+                xacnhan.textContent = "Đã xác nhận";
+            } else {
+                xacnhan.textContent = "Chưa xác nhận";
+            }
+        });
+    </script>
 @endsection

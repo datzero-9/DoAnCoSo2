@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-    Admin | Product
+    Admin | Doanh thu
 @endsection
 
 @section('title-page')
@@ -50,11 +50,9 @@
                             $totalProduct = $totalProduct + $items->quantity;
                         @endphp
                     @endforeach
-
                 @empty
                     <strong class="">Doanh thu không tồn tại</strong>
                 @endforelse
-
                 <tr>
                     <td colspan="3" class="text-right"><strong>Tổng: </strong> <br>{{ number_format($totalProduct) }}
                     </td>
@@ -63,7 +61,5 @@
                 </tr>
             </tbody>
         </table>
-
-
     </div>
 @endsection

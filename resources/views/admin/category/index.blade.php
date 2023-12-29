@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-Admin | category
+Admin | Danh mục
 @endsection 
 
 @section('title-page')

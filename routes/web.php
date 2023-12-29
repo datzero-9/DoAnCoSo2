@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AccountUser;
 use App\Http\Controllers\Admin\StatisticalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
@@ -48,6 +49,8 @@ Route::middleware('user')->group(function () {
 
     Route::get('/checkout', [CheckoutController::class, 'form'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'submit_Form']);
+
+    Route::get('/history', [HistoryController::class, 'history'])->name('history');
 
     Route::get('/laptop/{category}', [SearchController::class, 'laptop'])->name('laptop.index');
     Route::get('/manhinh/{category}', [SearchController::class, 'manhinh'])->name('manhinh.index');

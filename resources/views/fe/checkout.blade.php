@@ -1,6 +1,6 @@
 @extends('fe.index')
 @section('main')
-<div class="container fs-5"><a href="{{route('home')}}"><strong class="text-dark">Trang chủ /</strong></a><a href="" class="text-dark"> Giỏ hàng /</a> <a href=""> Thanh toán</a></div>
+<div class="container fs-5"><a href="{{route('home')}}"><strong class="text-dark">Trang chủ /</strong></a><a href="" class="text-dark"> Giỏ hàng /</a> <a href=""> Đặt hàng</a></div>
 <div class="container">
     @if (session('msg'))
     <div class="alert alert-success text-center"><strong><h4>{{session('msg')}}</h4></strong></div>   

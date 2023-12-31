@@ -114,16 +114,8 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request,Category $category)
     {
-       
         try {
-            
-
-            // Xóa sản phẩm
-            $category->delete();
-
-            // Kích hoạt lại ràng buộc khóa ngoại
-         
-            
+            $category->delete();    
             return redirect()->route('category.index')->with('msg', 'xóa thành công ');
         } catch (\Throwable $th) {
             return redirect()->back()->with('msg', 'xóa không thành công ');

@@ -3,6 +3,11 @@
         color:#FFBB09;
         text-decoration: none;
     }
+    @media(max-width:769px) {
+       .myfooter{
+        display: none;
+       }
+    }
 </style>
 <section class="myfooter bg-dark py-4 text-white">
     <div class="container">

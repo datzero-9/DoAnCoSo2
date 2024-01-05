@@ -288,7 +288,7 @@ overflow: hidden;
                     </div>
                 </div> 
                 @endforeach
-                {{$allProduct->links()}}       
+                {{-- {{$allProduct->links()}}        --}}
             </div><hr>
         </div>
     </div>

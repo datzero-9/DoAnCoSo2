@@ -150,20 +150,12 @@ class ProductController extends Controller
         ];
         $request->validate($rules, $message);
 
-        // try {
-        //     $product->update($request->all());
-        //     return redirect()->route('product.index')->with('msg', 'update thành công ');
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with('msg', 'Update không thành công ');
-        // }
 
-
-        // Kiểm tra xem có tệp tin ảnh mới được tải lên hay không
-        // dd($request->hasFile('photo'));
         if ($request->hasFile('photo')) {
-            // $file = $request->file('photo');
-            $fileName = $request->photo->getClientOriginalName();           
-            $product->image = $request->photo->storeAs($fileName);          
+            $fileName = $request->photo->getClientOriginalName();
+            $request->photo->storeAs('public/images', $fileName);
+            $product->image = $fileName;
+            // dd($product->image);
         }
         // Cập nhật các trường dữ liệu khác từ yêu cầu HTTP
         $product->name = $request->name;
@@ -173,7 +165,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
 
         // Lưu các thay đổi vào cơ sở dữ liệu
-        // dd($product->all());
+        // dd($product->category_id);
         try {
             $product->save();
             return redirect()->route('product.index')->with('msg', 'Cập nhật thành công');

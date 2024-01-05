@@ -140,7 +140,7 @@
             <form action="" method="POST">
                 @csrf
                 <div class="field mt-4">
-                    <input type="text" name="name" class="input" placeholder=" " />
+                    <input type="text" name="name" class="input" placeholder=" "  value="{{old('name')}}"/>
                     <label for="name" class="label">Nhập họ tên</label>                   
                 </div>
                 @error('name')
@@ -148,7 +148,7 @@
                     @enderror
 
                 <div class="field mt-4">
-                    <input type="email" name="email" class="input" placeholder=" " />
+                    <input type="email" name="email" class="input" placeholder=" " value="{{old('email')}}" />
                     <label for="email" class="label">Email</label>
                 </div>
                 @error('email')
@@ -158,7 +158,7 @@
                 
                     
                 <div class="field mt-4">
-                    <input type="password" name="password" class="input" placeholder=" " />
+                    <input type="password" name="password" class="input" placeholder=" " value="{{old('password')}}"/>
                     <label for="password" class="label">Nhập mật khẩu</label>                   
                 </div>
                 @error('password')
@@ -166,7 +166,7 @@
                     @enderror
                     
                 <div class="field mt-4">
-                    <input type="password" name="password_confirmation" class="input" placeholder=" " />
+                    <input type="password" name="password_confirmation" class="input" placeholder=" " value="{{old('password_confirmation')}}"/>
                     <label for="password_confirmation" class="label">Nhập lại mật khẩu</label>                   
                 </div>
                 @error('password')
@@ -188,7 +188,7 @@
             </form>
         </div>
     </div>
-    <script>
+    {{-- <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
@@ -196,7 +196,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-25065548-2');
-    </script>
+    </script> --}}
 
 </body>
 

@@ -18,10 +18,11 @@
             <div class="alert alert-danger my-5 text-center">{{ session('error') }}</div>
         @endif
 
-        <table class="table table table-hover text-center">
+        <table class="table table table-hover ">
             <thead>
                 <tr>
                     <th width="5%">Mã đơn hàng</th>
+                    <th width="5%">ảnh</th>
                     <th width="30%">Loại sản phẩm</th>
                     <th width="10%">Số lượng bán ra</th>
                     <th width="15%">Tiền bán sản phẩm</th>
@@ -41,6 +42,8 @@
                     @foreach ($item->orderDetails as $items)
                         <tr>
                             <td>{{ $items->id }}</td>
+                            <td><img src="{{ asset('storage/images') }}/{{$items->product->image}}" alt="" width="150px"
+                                style="height: 100px;"> </td>
                             <td>{{ $items->product->name }}</td>
                             <td>x{{ $items->quantity }}</td>
                             <td>{{ number_format($items->price * $items->quantity) }}</td>
@@ -54,7 +57,7 @@
                     <strong class="">Doanh thu không tồn tại</strong>
                 @endforelse
                 <tr>
-                    <td colspan="3" class="text-right"><strong>Tổng: </strong> <br>{{ number_format($totalProduct) }}
+                    <td colspan="4" class="text-right"><strong>Tổng: </strong> <br>{{ number_format($totalProduct) }}
                     </td>
                     <td class="text-center"><strong>Tổng doanh thu: </strong>{{ number_format($totalMoney) }}</td>
                     <td><a href="" class="btn btn-primary">Quay lại</a></td>

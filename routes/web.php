@@ -39,7 +39,9 @@ Route::get('/logoutAcc', [UserController::class, 'logoutAcc'])->name('logoutAcc'
 
 Route::middleware('user')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
     Route::get('/detail/{slug}', [HomeController::class, 'detail'])->name('detail');
+    
     Route::get('/contact', [UserController::class, 'contact'])->name('contact.index');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
